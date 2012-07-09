@@ -1,0 +1,72 @@
+\begin{lem}
+  \label{lem:dgmm-delta}
+  The worst case number of rounds for DMMW is $O(\Delta)$.
+  \end{lem}
+  \input{proofs/terms-dgmm-1.tex}
+
+  \begin{proof}[Proof of Lemma~\ref{lem:dgmm-delta}]
+  Let us assume not, that is, there is a node in the graph which will not cover its edges in $C\Delta$ rounds, where $C$ is some constant.
+
+  We consider a node $u$, which has the highest degree, and therefore the most uncovered edges and active neighbors in the graph. We allow $u$ to be any node in the graph with a degree of $\Delta$.
+
+  In each round, $\forall \text{ nodes } v \in G, v$ chooses to be a sender or a reciever without bias. 
+
+  Let us only examine the rounds in which $u$ chooses to be a reciever. This means that $u$ will only weight an edge if at least one of its neighbors chooses to be a sender {\em and} that node invites $u$ to weight an edge. However, if $u$ recieves at least one invitation, $u$ will definitely respond to one invitation and one edge incident to $u$ will be covered.
+
+  The choice to be a sender or a reciever is independent and unbiased. Therefore, $\sfrac{\Delta}{2}$ of the neighbors of $u$ will be senders with high probability. However, it is not enough that each of them is a sender, they must also choose to invite $u$ to weight an edge.
+
+  Each node that is a sender makes an unbiased choice to invite one of its neighbors. A node can have at most $\Delta$ neighbors. We will call the degree of a neighbor of $u$ $\Gamma$, such that $\Gamma <= \Delta$. So for each node that is a neighbor of $u$ and is a sender, the odds that that node will invite $u$ are $\sfrac{1}{\Gamma}$.
+
+  The specific event that we want the probability for is that (a), $u$ is a reciever, (b) $u$ has a neighbor that is a sender, (c) that neighbor sends an invitation to $u$, therefore creating a match (M).
+
+  \input{eqns/eqn-delta-odds.tex}
+
+  If we take the complement of this event, we get $\sfrac{3}{4}$. For some arbitrarily large constant $C$, the probability that this will happen $C$ times in a row goes to 0.\footnote{For example, if $C = 100$ the odds that $u$ will never receive an invitation while in the receiving mode are $\approx 3\times10^{12}:1$ against.} 
+
+  This is a hard boundary. The only way for $P(M)$ to be less than $\sfrac{1}{4}$ is if $\Gamma > \Delta$, which contradicts the definition of $\Delta$. This leads us to the following conclusion:
+
+  \input{eqns/eqn-odds-all.tex}
+
+  Or, less formally, if the degree of a node is $\Delta$, the chances it will cover an edge in a single round is $\sfrac{1}{4}$, and therefore, it will cover at least one edge in $C$ rounds.
+
+  Recall that each node makes its random choices for sending invitations only from its active nodes. Recall also that if an edge is weighted, one of its endpoints must join the cover. Therefore, if a node weights an edge but remains active itself, it must reduce its number of active neighbors by one. We define some new terms for convenience:
+  \begin{ldef}
+  The {\em active degree} of $u$ is the number of active neighbors of $u$. This can be no lower than the number of uncovered edges of $u$.
+  \end{ldef}
+  \begin{ldef}
+  $\delta$ is the highest {\em active degree} in the graph. No node has more than $\delta$ unweighted edges or active neighbors. Prior to the first round, $\delta \equiv \Delta$.
+  \end{ldef}
+  \begin{ldef}
+  $\gamma$ is the active degree of a node incident to a node with an active degree of $\delta$. $\gamma \le \delta$ by definition of $\delta$.
+  \end{ldef}
+  \begin{ldef}
+  $\alpha(v)$ is the active degree of $v$
+  \end{ldef} 
+
+  At the end of $C$ rounds, $u$ has only weighted one edge. This follows from our choice of $u$, $u$ is the node with the most edges to cover in the graph. We can safely make this choice because as the value of $\delta$ drops, any node that is not covering its edges will eventually have $\delta$ edges to cover. So it is sufficient to restrict our reason to a node $u$ with $\delta$ uncovered edges. Corollary~\ref{cor:delta-gamma-alpha} follows by our choice of $u$.
+
+  \begin{cor}
+  \label{cor:delta-gamma-alpha}
+  \begin{align*}
+\alpha(u) = \delta \implies \forall v | v \text{ is incident to } u, \alpha(v) \le \alpha(u)
+    \end{align*}
+    \end{cor}
+
+    Which supports our definition of $\gamma$. 
+
+    We now examine what happens after $C$ rounds have passed. After $C$ rounds, $\alpha(u) = \delta$, and $\forall v $ incident to $u, \alpha(v) = \gamma$. We again consider only the case of rounds in which $u$ chooses to be a reciever.
+
+    In this case, the number of active neighbors of $u$ is $\delta$, and each chooses to be a sender with a probability of $\sfrac{1}{2}$. Each node $v$ which is an active neighbor of $u$ has $\gamma$ active neighbors, and chooses to send an invitation to $u$ with a probability of $\sfrac{1}{\gamma}$. We want to know the odds for event $M$, that $u$ will weight an edge in a given round where $u$ is a reciever. This will happen when (a), $u$ is a reciever, (b) an active neighbor of $u$ is a sender, and (c), that node sends an invitation to $u$. This yields the same equation as \eqref{eqn:eqn-delta-odds}, but with different terms.
+
+    \input{eqns/eqn-odds-round.tex}
+
+    The result remains the same, however, the odds that a node with an active degree of $\delta$ will weight one edge as a reciever are $\sfrac{1}{4}$. So in $2C$ rounds, $u$ will weight a second edge.
+
+    This applies to every node $v | \alpha(v) = \delta$ for the same reason that every node with a degree of $\Delta$ weighted at least one edge in the first $C$ rounds. Therefore, $\delta$ must decrease by one every $C$ rounds.
+
+    But since $|\delta| = |\Delta|$ in round one, this implies that in $C \times \Delta$ rounds, $\delta$ will equal 0. 
+
+    And if the node with the highest number of uncovered edges in the graph has 0 or fewer uncovered edges, than every node has covered all of its edges.
+
+    This contradicts our premise, that there is a node which does not cover all of its edges in $C\Delta$ rounds, so Lemma~\ref{lem:dgmm-delta} is proved.
+    \end{proof} 

@@ -1,0 +1,37 @@
+\begin{thm}
+  For a given network $N(S,T)$ with sensors $s\in S$ and targets $t\in T$, there exists an equivalent hypergraph $G(V,E)$ such that any solution to the target coverage problem in $N$ is a vertex cover in $G$.
+\label{thm:equiv}
+\end{thm}
+\begin{proof}[Proof of Theorem~\ref{thm:equiv}]
+\label{prf:equiv}
+\begin{defn}
+For $N(S,T)$, define set of all sensors which can cover a target as $c(t_i) = \{s \in S | s \text{\ covers\ } t\}$.  For example, if sensors $s_1, s_4, s_7$ are all of the sensors that cover $t_3$, $c(t_3) = \{s_1, s_4, s_5\}$. \label{defn:network}
+\end{defn}
+\begin{defn}Construct the equivalent hypergraph $G(V,E)$, as $V \cong S$ and $E$ is isomorphic to the set of hyper edges $c(t_i)$, for all $t_i \in T$. 
+\label{defn:graph}
+\end{defn}
+
+To be shown: if $S' \subset S$ is a solution for target coverage in $N$, $S'$ is a vertex cover of $G$. 
+
+We proceed by direct proof. Let us define $S'\subset S$ such that $S'$ is a target cover of $N$. If $S'$ is a target cover, we know by definition~\ref{defn:graph} that there is an isomorphic set $V'$ in $G$. It is to be shown that $V'$ is a vertex cover in $G$.
+
+By the definition of a target cover, we know that:
+\begin{equation}
+\forall t \in T, \exists s \in S' | s \in c(t)
+\label{eqn:tcover}
+\end{equation}
+That is, for every target, there is a sensor in $S'$ that covers that target.
+
+By substituting isomorphic sets, equation~\ref{eqn:tcover} implies that:
+\begin{equation}
+\forall t \in T, \exists v \in V', e \in E | v \in e
+\label{eqn:tvbridge}
+\end{equation}
+
+Since we know by definition~\ref{defn:network} that each target has a unique set of neighboring sensors covering it, which is isomorphic to one and exactly one edge, we can substitute again, yielding:
+\begin{equation}
+\forall e \in E, \exists v\in V' | v \in e
+\end{equation}
+
+Therefore $V'$ must be a vertex cover of $G$.  
+\end{proof}

@@ -1,0 +1,51 @@
+\begin{lem}
+\label{lem:dgmm-log}
+Algorithm~\ref{alg:dgmm} (DMMW) terminates in $O(log \Delta)$ rounds with high probability for random connected graphs.
+\end{lem}
+
+
+\begin{proof}[Proof of Lemma~\ref{lem:dgmm-log}]
+\input{proofs/terms-dgmm-1.tex}
+\input{proofs/terms-dgmm-2.tex}
+Lemma~\ref{lem:dgmm-log} can be restated in terms of the following propositions:
+\begin{lprp}
+\label{prop:dgmm-log-each}
+Each active node in the graph joins the cover with a constant probability in each round.
+\end{lprp}
+\begin{lprp}
+\label{prop:dgmm-log-alpha}
+With high probability, $\delta$ decreases by a constant fraction in each round.
+\end{lprp}
+\begin{proof}[Proof of Proposition~\ref{prop:dgmm-log-each}]
+We show that there is an active node $w$ in the graph that will join the cover with a probability of at least $\sfrac{1}{8}$. We know that at the beginning of the round, $w$ will choose to either be a sender or a reciever with equal probability. Let us assume that $w$ chooses to be a reciever.
+
+We know that $w$ has some number of active neighbors, indicated by $\alpha(w)$. Each neighbor of $w$ also has some number of active neighbors. Each active degree is an integer between 1 and $\delta$. Following Assumption~\ref{assm:distribution}, we can consider each node to have approximately the same active degree, which we indicate by $\alpha$. 
+
+Each active neighbor of $w$ also chooses to be a sender or a reciever with equal probability. Therefore, the expected number of active neighbors of $w$ that choose to be senders is $\sfrac{\alpha}{2}$. 
+
+Each neighbor of $w$ that chooses to be a sender will, according to Line~\ref{alglin:dgmm-issue-invite} of Algorithm~\ref{alg:dgmm}, choose one of its active neighbors to send an invitation to. Each node has approximately $\alpha$ neighbors, so for each active neighbor $v$ of $w$ that chooses to be a sender, the probability that $v$ will send an invitation to $w$ is $\sfrac{1}{\alpha}$.
+
+Therefore, the probability that $w$ will recieve an invitation from an active neighbor is: \begin{equation*}\frac{\alpha}{2} \times \frac{1}{\alpha} = \frac{1}{2}\end{equation*}
+
+If $w$ recieves at least one invitation, it will respond to exactly one invitation (\algref{alg:dgmm}{alglin:dgmm-choose-invite}), so the probability that $w$ will respond to an invitation from some active neighbor $v$ is exactly the same as the probability that $w$ will recieve an invitation from some active neighbor $v$. Therefore, the odds that $w$ will be a reciever ($\sfrac{1}{2}$) and cover an edge in this round ($\sfrac{1}{2}$) is: \begin{equation*}\frac{1}{2} \times \frac{1}{2} = \frac{1}{4}\end{equation*}
+
+Following Assumption~\ref{assm:likelihood}, which follows directly from Assumption~\ref{assm:distribution}, if $w$ responds to an invitation from an active neighbor $v$, both $v$ and $w$ have an equal chance of joining the cover. Therefore, the odds that $w$ will join the cover in this round are:\begin{equation*}\frac{1}{4} \times \frac{1}{2} = \frac{1}{8}\end{equation*}
+
+However, we did not account for the possibility that $w$ would choose to be a sender. As we have just demonstrated in the case of the active neighbor $v$, there is a non-zero probability that if $w$ chooses to be a sender, $w$ will also join the cover. If we designate the probability of a sender being chosen by a reciever as a positive value $\epsilon > 0$, then the odds that a sender will join the cover become $\sfrac{\epsilon}{2}$. Therefore, for the node $w$, the probability that $w$ will join the cover are:\begin{equation*}\frac{1}{8} + \frac{\epsilon}{2} \ge \frac{1}{8}\end{equation*}
+
+\end{proof}
+\begin{proof}[Proof of Proposition~\ref{prop:dgmm-log-alpha}]
+We consider a node $u$, where $\alpha(u) = \delta$. $u$ may choose to be a sender or a receiver in this round, and $u$ may or may not join the matching. We do make the assumption that $u$ does not join the cover in this round.
+
+We add a notation, $\cR_u$ and $\cS_u$, which indicates the neighbors of $u$ that are either recievers or senders, respectively.
+
+$u$ has $\delta$ active neighbors. Of these neighbors, approximately $\sfrac{\delta}{2}$ will become recievers in this round. Call this group $\cR_u$. Each neighbor of $u$ that is a recieiver will recieve an invitation with probability $\sfrac{1}{2}$.
+
+Therefore, $\sfrac{\delta}{4}$ of the neighbors of $w$ will both be recievers and recieve an invitation. Each of these joins the cover with a probability of $\sfrac{1}{2}$. Therefore, we can calculate from the magnitude of $\cR_u$ and the behavior of each node $v \in \cR_u$ that in this round, $\sfrac{\delta}{4}\times \sfrac{1}{2}$ of the neighbors of $w$ are expected to join the cover and cover an edge of $w$. This implies that if $\alpha(w) = \delta$ at the beginning of a round, $\alpha(w) = \delta-\sfrac{\delta}{8} = \sfrac{7}{8}$ at the end of the round.
+
+This decrease will apply to all nodes in the network if degrees and weights are distributed randomly through the graph. Therefore, $\delta$ will decrease by at least $\sfrac{1}{8}$ in each communication round. 
+\end{proof}
+
+\begin{cor}WHP, the number of communication rounds required to resolve Algorithm~\ref{alg:dgmm} for a random graph is $O(\log\Delta)$.\end{cor}
+
+\end{proof} 

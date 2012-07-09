@@ -2,12 +2,56 @@
 %% http://bibdesk.sourceforge.net/
 
 
-%% Created for John Daigle at 2012-07-09 14:08:05 -0400 
+%% Created for John Daigle at 2012-07-09 14:32:06 -0400 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
 
 
+
+@inproceedings{Onak:2012:NSA:2095116.2095204,
+	Abstract = {We give a nearly optimal sublinear-time algorithm for approximating the size of a minimum vertex cover in a graph G. The algorithm may query the degree deg(v) of any vertex v of its choice, and for each 1 ≤ i ≤ deg(v), it may ask for the ith neighbor of v. Letting VCopt(G) denote the minimum size of vertex cover in G, the algorithm outputs, with high constant success probability, an estimate [EQUATION] such that [EQUATION], where ε is a given additive approximation parameter. We refer to such an estimate as a (2, ε)-estimate. The query complexity and running time of the algorithm are {\~O}([EQUATION] · poly(1/ε)), where d denotes the average vertex degree in the graph. The best previously known sublinear algorithm, of Yoshida et al. (STOC 2009), has query complexity and running time O(d4/ε2), where d is the maximum degree in the graph. Given the lower bound of Ω(d) (for constant ε) for obtaining such an estimate (with any constant multiplicative factor) due to Parnas and Ron (TCS 2007), our result is nearly optimal.
+
+In the case that the graph is dense, that is, the number of edges is Θ(n2), we consider another model, in which the algorithm may ask, for any pair of vertices u and v, whether there is an edge between u and v. We show how to adapt the algorithm that uses neighbor queries to this model and obtain an algorithm that outputs a (2, ε)-estimate of the size of a minimum vertex cover whose query complexity and running time are {\~O}(n) · poly(1/ε).},
+	Acmid = {2095204},
+	Author = {Onak, Krzysztof and Ron, Dana and Rosen, Michal and Rubinfeld, Ronitt},
+	Booktitle = {Proceedings of the Twenty-Third Annual ACM-SIAM Symposium on Discrete Algorithms},
+	Date-Added = {2012-07-09 18:12:56 +0000},
+	Date-Modified = {2012-07-09 18:12:56 +0000},
+	Location = {Kyoto, Japan},
+	Numpages = {9},
+	Pages = {1123--1131},
+	Publisher = {SIAM},
+	Series = {SODA '12},
+	Title = {A near-optimal sublinear-time algorithm for approximating the minimum vertex cover size},
+	Url = {http://dl.acm.org/citation.cfm?id=2095116.2095204},
+	Year = {2012},
+	Bdsk-Url-1 = {http://dl.acm.org/citation.cfm?id=2095116.2095204},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAYoAAAAAAYoAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0A5wMTEyMy1vbmFrLnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEHph1zCBXPQAAAAAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAzCCPfQAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgA7TWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAcDExMjMtb25hay5wZGYAAA4AHgAOAHAAMQAxADIAMwAtAG8AbgBhAGsALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASACpVc2Vycy9wYXVsL0RvY3VtZW50cy9CaWJsaW8vcDExMjMtb25hay5wZGYAEwABLwAAFQACAAv//wAAgAXSHB0eH1gkY2xhc3Nlc1okY2xhc3NuYW1lox8gIV1OU011dGFibGVEYXRhVk5TRGF0YVhOU09iamVjdF8QKy4uLy4uLy4uLy4uL0RvY3VtZW50cy9CaWJsaW8vcDExMjMtb25hay5wZGbSHB0kJaIlIVxOU0RpY3Rpb25hcnkSAAGGoF8QD05TS2V5ZWRBcmNoaXZlcgAIABEAFgAfACgAMgA1ADoAPABFAEsAUgBdAGUAbABvAHEAcwB2AHgAegB8AIYAkwCYAKACLgIwAjUCPgJJAk0CWwJiAmsCmQKeAqECrgKzAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAsU=}}
+
+@article{Parnas:2007:AMV:1280283.1280327,
+	Abstract = {For a given graph G over n vertices, let OPT"G denote the size of an optimal solution in G of a particular minimization problem (e.g., the size of a minimum vertex cover). A randomized algorithm will be called an @a-approximation algorithm with an additive error for this minimization problem if for any given additive error parameter @e>0 it computes a value OPT@? such that, with probability at least 2/3, it holds that OPT"G@?OPT@?@?@a@?OPT"G+@en. Assume that the maximum degree or average degree of G is bounded. In this case, we show a reduction from local distributed approximation algorithms for the vertex cover problem to sublinear approximation algorithms for this problem. This reduction can be modified easily and applied to other optimization problems that have local distributed approximation algorithms, such as the dominating set problem. We also show that for the minimum vertex cover problem, the query complexity of such approximation algorithms must grow at least linearly with the average degree d@? of the graph. This lower bound holds for every multiplicative factor @a and small constant @e as long as d@?=O(n/@a). In particular this means that for dense graphs it is not possible to design an algorithm whose complexity is o(n).},
+	Acmid = {1280327},
+	Address = {Essex, UK},
+	Author = {Parnas, Michal and Ron, Dana},
+	Date-Added = {2012-07-09 18:08:55 +0000},
+	Date-Modified = {2012-07-09 18:08:55 +0000},
+	Doi = {10.1016/j.tcs.2007.04.040},
+	Issn = {0304-3975},
+	Issue_Date = {August, 2007},
+	Journal = {Theor. Comput. Sci.},
+	Keywords = {Distributed algorithms, Minimum vertex cover, Sublinear approximation algorithms},
+	Month = aug,
+	Number = {1-3},
+	Numpages = {14},
+	Pages = {183--196},
+	Publisher = {Elsevier Science Publishers Ltd.},
+	Title = {Approximating the minimum vertex cover in sublinear time and a connection to distributed algorithms},
+	Url = {http://dx.doi.org/10.1016/j.tcs.2007.04.040},
+	Volume = {381},
+	Year = {2007},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1016/j.tcs.2007.04.040},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAX4AAAAAAX4AAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0AsxMjgwMzI3LnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEHqG/zCBZi1BERiAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAzCCRywAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgA4TWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAMTI4MDMyNy5wZGYADgAYAAsAMQAyADgAMAAzADIANwAuAHAAZABmAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAJ1VzZXJzL3BhdWwvRG9jdW1lbnRzL0JpYmxpby8xMjgwMzI3LnBkZgAAEwABLwAAFQACAAv//wAAgAXSHB0eH1gkY2xhc3Nlc1okY2xhc3NuYW1lox8gIV1OU011dGFibGVEYXRhVk5TRGF0YVhOU09iamVjdF8QKC4uLy4uLy4uLy4uL0RvY3VtZW50cy9CaWJsaW8vMTI4MDMyNy5wZGbSHB0kJaIlIVxOU0RpY3Rpb25hcnkSAAGGoF8QD05TS2V5ZWRBcmNoaXZlcgAIABEAFgAfACgAMgA1ADoAPABFAEsAUgBdAGUAbABvAHEAcwB2AHgAegB8AIYAkwCYAKACIgIkAikCMgI9AkECTwJWAl8CigKPApICnwKkAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAArY=}}
 
 @inproceedings{1582746,
 	Abstract = {The paper presents distributed and parallel $\delta$-approximation algorithms for covering problems, where $\delta$ is the maximum number of variables on which any constraint depends (for example, $\delta$ = 2 for VERTEX COVER).

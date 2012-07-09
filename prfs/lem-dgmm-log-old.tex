@@ -1,0 +1,42 @@
+\begin{lem}
+  \label{lem:dgmm-delta}
+  DGMM will weight all edges in approximately $log\Delta$ communication rounds with high probability.
+\end{lem}
+
+\begin{ldef}
+A node is {\em committed} if it has joined the cover or if all of its neighbors have joined the cover.
+\end{ldef}
+\begin{ldef}
+A node is {\em active} if it is not committed.
+\end{ldef}
+\begin{ldef}
+$\Delta$ is the maximum degree of the Graph.
+\end{ldef}
+\begin{ldef}
+\label{def:gamma}
+For an active node $u$, $\Gamma_u$ is the number of uncovered edges of $u$. $\Gamma$ is the average value of $\Gamma_u$ for all active nodes in the Graph. $\Gamma_u$ is equivalent to the number of active neighbors of $u$, and is bounded by $\Delta$.
+\end{ldef}
+\begin{note}
+Only nodes that are still active at the end of a round participate in the next round. 
+\end{note}
+ 
+\begin{IEEEproof}[Proof of Lemma~\ref{lem:dgmm-delta}]
+The neighborhood of $u$ ($N_u$) contains $u$ and all nodes $v$ such that there is an edge $(u,v)$. We can assume without loss of generality that there are $\Gamma$ uncovered edges and therefore $\Gamma$ active nodes in $N_u$. $u$ must cover all of these edges in order for the algorithm to halt. 
+
+If $u$ joins the cover in a round, all of its edges will be covered. Otherwise, an edge $(u,v)$ will be covered only if $v$ joins the cover.
+
+At the beginning of a round, $u$ chooses to issue invitations or recieve invitations without bias.
+
+Assume $u$ chooses to recieve invitations. Approximately $\sfrac{\Gamma}{2}$ of the active neighbors of $u$ will choose to send invitations. We can assume that for each node $v$ that is a neighbor of $u$, $\Gamma_v = \Gamma$. Each sender chooses one of its $\Gamma$ active nodes to send an invitation to without bias, so the odds that a given neighbor of $u$ will send an invitation to $u$ is $\sfrac{\Gamma}{2} \times \sfrac{1}{\Gamma} = \sfrac{1}{2}$. If $u$ recieves any invitations, it will respond to at least one. We know that if $u,v$ are endpoints in the matching for a round, one of them must join the cover, so if $u$ is a reciever, it will cover at least one edge with a probability of $\sfrac{1}{2}$. The probability that $u$ will join the cover is the same as the probability that $v$ will join the cover, so $u$ will cover all of its edges with a probability of $\sfrac{1}{2}$. Therefore, the probability that $u$ is a reciever and all edges incident to $u$ are covered is $\sfrac{1}{2} \times \sfrac{1}{2} \times \sfrac{1}{2} = \sfrac{1}{8}$.
+
+For each active neighbor of $u$, this same analysis applies. Each node will be a reciever with probability of $\sfrac{1}{2}$ and each node that is a reciever will weight all of its edges with a probability of $\sfrac{1}{4}$.
+
+Assume that $u$ is dormant for all phases of the round except the exchange/update phase. In this phase, all nodes that have joined the cover broadcast their status. If $u$ is incident to a node $v$ that joins the cover and edge $(u,v)$ is unweighted, $u$ will set the weight of $(u,v)$ to 0. 
+
+$\sfrac{\Gamma_u}{2}$ neighbors of $u$ will choose to be recievers. Of these, $\sfrac{1}{2}$ will participate in the matching. Of these, $\sfrac{1}{2}$ will join the cover.
+
+Therefore, during the exchange phase, every node $u$ will weight $\sfrac{\Gamma_u}{2} \times \sfrac{1}{2} \times \sfrac{1}{2} = \sfrac{\Gamma}{8}$ of its edges in every round regardless of whether $u$ joins the matching or not. 
+
+$\Gamma$ is bounded by $\Delta$, and the algorithm terminates when all nodes have weighted all edges. Therefore Lemma~\ref{lem:dgmm-delta} is correct.
+\end{IEEEproof}
+
