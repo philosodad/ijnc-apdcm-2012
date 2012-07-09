@@ -79,6 +79,9 @@ In this subsection we'll define the problem.
 
 \subsection{Prior Work}
 
+Sequential Linear time algorithms for covering problems are surveyed in detail in \cite{254190}. The seminal paper on Linear Programming techniques for constant ratio approximation of MWVC was published by Bar-Yehuda and Even in 1981 \cite{Bar-Yehuda:1981lr}. Gonzalez created a 2-optimal LP-Free linear time algorithm based on Maximal Matching in 1995 which is the basis of our distributed algorithm \cite{Gonzalez1995129}. 
+
+We are aware of two prior distributed algorithms for minimum weighted vertex cover. Grandoni et. al present a 2-optimal algorithm based on maximal matching in 2008\cite{1435381}. This algorithm uses $O(\log n + \hat{W})$ communication rounds, where $\hat{W}$ is the average vertex weight, and $n$ is the number of vertexes. Koufogiannakis and Young present a simpler $O(\log n)$ algorithm in 2009 \cite{1582746}.
 In this section we'll talk about prior work.
 
 \section{The Vertex Cover Problem}
