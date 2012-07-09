@@ -1,0 +1,91 @@
+\usepackage{verbatim}
+\usepackage{multirow} \usepackage{enumerate}
+\usepackage{amsmath,enumerate} \usepackage{amsthm}
+\usepackage{algcompatible}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{pstricks}
+\usepackage{amssymb, latexsym}
+\usepackage{xfrac}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[captionskip=5pt, nearskip=5pt, font=small]{subfig}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage{listings}
+
+%specific to this document only
+\input{plotamble.tex}
+%%%%%%%%%%%%%
+
+\input{tikzamble.tex}
+% \paperheight=11in \paperwidth=8.5in \textheight=9.0in
+% \textwidth=6.5in \voffset=-.875in \hoffset=-.875in
+\newenvironment{code} {\begin {quote}\begin{footnotesize}}
+    {\end{footnotesize}\end{quote}}
+
+% \oddsidemargin 0.0 in \evensidemargin 0.0 in
+\newenvironment{enumeratealpha}
+{\begin{enumerate}[(a{\textup{)}}]}{\end{enumerate}}
+
+\theoremstyle{plain}
+\newtheorem{lem-rule}{Rule}
+\newtheorem{thm}{Theorem}
+\newtheorem{con}{Conjecture}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prp}{Proposition}
+\newtheorem{prop}{Proposition}[con]
+\newtheorem{lprp}{Proposition}[lem]
+\newtheorem{cor}{Corollary}[lem]
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[thm]
+\newtheorem{defi}{Definition}
+\newtheorem{dfn}{Definitions}[thm]
+\newtheorem{ldef}{Definition}[lem]
+\newtheorem{assm}{Assumption}
+\theoremstyle{remark}
+\newtheorem*{smy}{Summary}
+\newtheorem{note}{Note}[thm]
+\newtheorem{case}{Case}
+%algorithms commands
+\algblockdefx[Case]{Case}{EndCase} %
+[1] [{\em var}] {{\bfseries case} {\em #1\ } } %
+{{\bfseries end case}}%
+\algcblockdefx[Case]{Case}{When}{EndCase}
+[1] [{\em true}] {{\bfseries when} {\em #1\ }}
+{{\bfseries end case}} %
+
+\algblockdefx[TimesDo] {DoTimes}{EndTimes}
+[1] [0] {#1 times {\bfseries do}}
+{{\bfseries end do}}
+
+%subalgorithms environment
+\makeatletter
+\newcounter{parentalgorithm}
+\newenvironment{subalgorithms}{%
+%  \refstepcounter{algorithm}%
+  \floatname{algorithm}{Procedure}
+  \protected@edef\theparentalgorithm{\thealgorithm}%
+  \setcounter{parentalgorithm}{\value{algorithm}}%
+  \setcounter{algorithm}{0}%
+  \def\thealgorithm{\theparentalgorithm-\alph{algorithm}}%
+  \ignorespaces
+}{%
+  \setcounter{algorithm}{\value{parentalgorithm}}%
+  \ignorespacesafterend
+}
+\makeatother
+
+%code environments
+\usepackage{float}
+ 
+\floatstyle{ruled}
+\newfloat{codeblock}{thp}{lop}
+\floatname{codeblock}{Example}
+
+\lstnewenvironment{rubyblock} 
+{\lstset{language=Ruby, breaklines=true, basicstyle=\small, xleftmargin=10pt, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, escapeinside={|;}{;|}}}
+{}
+% text macros
+\input{macramble.tex}
+

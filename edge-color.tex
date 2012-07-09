@@ -1,0 +1,79 @@
+\documentclass[conference, 10pt, letter]{IEEEtran}
+\input{preamble.tex}
+\bibliographystyle{IEEEtranS}
+
+\begin{document}
+\title{Two Edge Coloring Algorithms Using a Simple Matching Discovery Automata}
+
+\author{\IEEEauthorblockN{J. Paul Daigle and Sushil K. Prasad}
+\IEEEauthorblockA{Department of Computer Science\\
+Georgia State University\\
+Atlanta, Georgia 30303, USA\\}
+}
+
+\maketitle
+
+\begin{abstract}
+We here present two probabilistic edge coloring algorithms for a message passing model of distributed computing. The algorithms use a simple automata for finding a matching on a graph to produce the colorings. Our first algorithm for edge coloring finds an edge coloring of a graph which is guaranteed to use no more than $2\Delta - 1$ colors and completes in $O(\Delta)$ communication rounds using only one hop information, where $\Delta$ is the greatest degree of the graph. Our second algorithm finds a strong edge coloring of a symmetric digraph in $O(\Delta)$ communication rounds, using only one hop information. 
+\end{abstract}
+
+\section{Introduction}
+In this paper, we use the matching based automata used in \cite{Daigle:2011uq} and shown in Figure~\ref{fig:automata} as the basis for two different edge-coloring algorithms, edge coloring of an undirected graph and strong edge coloring of a directed graph. A practical distributed algorithm for the last problem is of some interest in networking, as it can be used as a model for channel or time-slot assignment in an adhoc network \cite{1598948, 1498534}.
+
+Our algorithms are probabilistic and compete well with other probabilistic algorithms. For the edge coloring problem, our algorithm produces a coloring which is no greater than $2\Delta - 1$ in $O(\Delta)$ rounds in the typical case, where $\Delta$ is the maximum degree of the graph. Our algorithm for strong directed coloring produces a correct coloring in $O(\Delta)$ rounds. 
+
+\input{figs/fig-automata.tex} 
+Our algorithms assume a message based model of computing, so we can assume that compute nodes are synchronized and that each node can communicate with each of its neighbors in each round \cite{1146387}. Each node is therefore assumed to move synchronously through each stage of the algorithm. 
+
+Our main contribution is extending the framework developed in \cite{Daigle:2011uq} to a new set of problems. The algorithms based on the framework are competitive with know algorithms in time complexity and provide high quality solutions. We believe that this basic approach can be modified and extended to solve a variety of problems, providing a simple starting point for the development of new distributed, probabilistic algorithms that provide constant approximations for NP complete problems.
+
+\subsection{Problem Definitions}
+\input{secs/sec-definitions.tex}
+\subsection{Prior Work}
+Distributed edge coloring is a well studied problem. Panconesi and collaborators have produced a number of papers tying edge coloring to channel assignment and presenting novel edge coloring algorithms with communication complexity of as low as $O(log{log{n}})$ \cite{Grable:1997:NOD:314161.314266},\cite{Panconesi:1997:RDE:249364.249368},\cite{1041515},\cite{982945}.
+
+Gandham et al. present an deterministic algorithm which colors a graph using $\Delta + 1$ colors with a time complexity of $2\Delta + 1$ for acyclic graphs \cite{1498534}. Barenboim et al. present a deterministic algorithm which extends beyond trees and provides an $O(\Delta)$ coloring in $O(\Delta^{1 + \epsilon)}$ time for an arbitrarily small constant $\epsilon \le 1$ \cite{Barenboim:2011:DDE:1993806.1993825}. A limitation of this algorithm is that the constant factor for quality increases as $\epsilon$ decreases.
+
+In strong edge coloring, Barret et al. present algorithms with running times dependent on the size of the graph $n$ \cite{1598948}. Kanj et al. show tight bounds for the quality and locality, but not the time bounds, of their algorithms \cite{Kanj:2009:LAE:1696884.1696902}.
+
+\subsection{The Message Passing Model}
+\input{secs/sub-message-passing-caveats.tex}
+
+\section{Edge Color Algorithm}
+\subsection{Algorithm}
+\input{secs/sub-edge-description.tex}
+\input{algs/alg-edge-color.tex}
+
+\subsection{Algorithm Analysis}
+
+We here address the termination, correctness, and solution quality of Algorithm~\ref{alg:edge-color}. We will first show that Algorithm~\ref{alg:edge-color} is likely to terminate in $O(\Delta)$ rounds, then that it will produce a correct coloring if it does terminate, and finally that the coloring produced will use no more than $2\Delta - 1$ colors.
+\input{prfs/lemma-edge-color-terminate.tex}
+\input{prfs/lemma-edge-color-correct.tex}
+\input{prfs/lemma-edge-color-approximate.tex}
+\input{prfs/pro-edge-color.tex}
+\input{prfs/lem-edge-color-optimal.tex}
+\section{DiMa2ed Algorithm}
+\subsection{Algorithm}
+\label{sub:dima2ed-description}
+\input{algs/alg-ma2ed.tex}
+\input{secs/sub-dima2ed-description.tex}
+\subsection{Algorithm Analysis}
+We here address the termination and correctness of Algorithm~\ref{alg:ma2ed}.
+\input{prfs/pro-ma2ed.tex}
+\section{Experiments and Results}
+\subsection{Algorithm~\ref{alg:edge-color}  on Erdos-Renyi Graphs}
+\input{secs/sub-experiment-erdren.tex}
+\subsection{Algorithm~\ref{alg:edge-color} on Scale-Free Graphs}
+\label{sub:experiment:scalefree}
+\input{secs/sub-experiment-scalefree.tex}
+\subsection{Algorith~\ref{alg:edge-color} on Small World Graphs}
+\input{secs/sub-experiment-smallworld.tex}
+\subsection{Algorithm~\ref{alg:ma2ed} on Erdos-Renyi Graphs}
+\label{sub:experiment-erdren-direct}
+\input{secs/sub-experiment-erdren-direct.tex}
+\section{Conclusion}
+\input{secs/sec-conclusion.tex}
+
+\bibliography{edge-color}
+
+\end{document}

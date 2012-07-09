@@ -1,0 +1,89 @@
+
+% $Header: /Users/paul/Classes/8220/Presentation/RCS/route-recovery.tex,v 1.1 2009/04/17 07:03:56 paul Exp $
+
+\documentclass{beamer}
+
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Frankfurt}
+  % or ...
+  
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+
+  \usefonttheme[onlymath]{serif}
+  
+}
+
+\usepackage{verbatim}
+\usepackage{multirow} \usepackage{enumerate}
+\usepackage{amsmath,enumerate} \usepackage{amsthm}
+%\usepackage{algcompatible}
+%\usepackage{algpseudocode}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{amssymb, latexsym}
+\usepackage{xfrac}
+\usepackage{mathtools}
+\usepackage{graphicx}
+%\usepackage[captionskip=5pt, nearskip=5pt, font=small]{subfig}
+\DeclareGraphicsRule{*}{mps}{*}{}
+%\usepackage{listings}
+
+%pgfsettings
+%\usepackage{pgf}
+%\usepackage{tikz}
+%\usetikzlibrary{decorations.pathmorphing} % LATEX and plain TEX when using Tik Z
+%\usetikzlibrary{positioning}
+%\tikzstyle{vx}=[draw,circle,fill=black!50,minimum size=2pt, inner sep=0pt, node distance=15mm]
+%\tikzstyle{bup}=[decoration={bent, aspect=.3, amplitude=4}, decorate, ->, >=stealth]
+%\tikzstyle{bdn}=[decoration={bent, aspect=.3, amplitude=-4}, decorate, ->, >=stealth]
+%\tikzstyle{BUP}=[decoration={bent, aspect=.3, amplitude=8}, decorate, ->, >=stealth]
+%\tikzstyle{BDN}=[decoration={bent, aspect=.3, amplitude=-8}, decorate, ->, >=stealth]
+\input{tikzamble.tex}
+\usepackage{algorithm, algorithmic}
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{graphics}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+%pgfplots
+\input{plotamble.tex}
+%%some convenient text substitution
+\def\vdp{Vertex-Disjoint Path}
+\def\vdps{Vertex-Disjoint Paths}
+\def\VDP{{\bf VDP}}
+\def\VDPs{{\bf VDPs}}
+\input{macramble.tex}
+
+% le bib style
+\bibliographystyle {IEEEtranS}

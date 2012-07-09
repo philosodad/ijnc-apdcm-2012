@@ -1,0 +1,118 @@
+\documentclass[twoside]{article}
+\input{preamble.tex}
+\usepackage{IJNC}
+
+
+\setcounter{page}{501}
+\newcommand{\jvolume}{X}
+\newcommand{\jnumber}{Y}
+\newcommand{\jmonth}{January}
+\newcommand{\jyear}{20XX}
+
+% title
+\newcommand{\jtitle}{A General Purpose Automata for Distributed Graph Algorithms}
+% running title for header
+\newcommand{\jrunningtitle}{A General Purpose Automata}
+
+
+
+\pagestyle{plain}
+
+
+\begin{document}
+\thispagestyle{empty}
+\copyrightheader
+
+\begin{center}
+% print title
+\jtitle
+
+\vspace{20pt}
+
+J. Paul Daigle 
+
+\vspace{2pt}
+
+Department of Computer Science, Georgia State University\\
+Atlanta, GA, 30303, USA
+
+\vspace{10pt}
+%and
+%
+\vspace{10pt}
+Sushil K. Prasad
+
+\vspace{2pt}
+Department of Computer Science, Georgia State University\\
+Atlanta, GA, 30303, USA
+
+\vspace{10pt}
+%and
+%
+%\vspace{10pt}
+%THIRD AUTHOR
+%
+%\vspace{2pt}
+%Group, Laboratory, Address\\
+%City, State ZIP, Country
+
+\vspace{20pt}
+\publisher{(received date)}{(revised date)}{(accepted date)}{Editor's name}
+%\publisherA{(received date)}{(revised date)}{(revised date)}{(accepted date)}{Editor's name}
+
+\end{center}
+
+
+\begin{abstract}
+We present an automata for a compute node in a message passing model which allows a distributed computer to approximate solutions for three NP-Complete graph problems. Our algorithm for the Vertex Cover Problem uses $O(\log{\Delta)}$ communication rounds to find a 2-approximate solution. Our edge coloring algorithm is also 2-approximate and resolves in $O(\Delta)$ rounds, and we find a correct strong edge coloring of a symmetric digraph in $O(\Delta)$ rounds. All three algorithms require only one hop information to find correct solutions. 
+\keywords{Distributed Algorithms, Vertex Cover, Edge Coloring, Strong Edge Coloring}
+\end{abstract}
+
+
+\section{Introduction}
+
+In this paper we'll show the automata itself, then our results for vertex cover and edge color.
+
+\subsection{Definitions}
+
+In this subsection we'll define the problem.
+
+\subsection{Prior Work}
+
+In this section we'll talk about prior work.
+
+\section{The Vertex Cover Problem}
+
+In this section we'll present the findings for Vertex Cover.
+
+\subsection{Algorithm}
+
+In this section we'll show the algorithm for vertex cover.
+
+\subsection{Experimental Design and Results}
+
+In this section we'll present the design and results of our experiments.
+
+\section{Edge Coloring Problem}
+
+In this section we'll present the approach for edge coloring.
+
+\subsection{Distance-1 Algorithm}
+
+\subsection{Modified Distance-1 Algorithm}
+
+
+\section{Experimental Results}
+
+
+\subsection{Distance 2 Algorithm}
+\subsection{Experimental Results}
+
+\section{Expansion to other problems and problems that cannot be solved in covering/covering}
+
+\bibliographystyle{plain}
+\bibliography{sample}
+
+
+\end{document}
+
