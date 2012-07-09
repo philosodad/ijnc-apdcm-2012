@@ -1,0 +1,299 @@
+%% This BibTeX bibliography file was created using BibDesk.
+%% http://bibdesk.sourceforge.net/
+
+
+%% Created for John Daigle at 2012-07-09 14:08:05 -0400 
+
+
+%% Saved with string encoding Unicode (UTF-8) 
+
+
+
+@inproceedings{1582746,
+	Abstract = {The paper presents distributed and parallel $\delta$-approximation algorithms for covering problems, where $\delta$ is the maximum number of variables on which any constraint depends (for example, $\delta$ = 2 for VERTEX COVER).
+
+Specific results include the following.
+
+For WEIGHTED VERTEX COVER, the first distributed 2-approximation algorithm taking O(log n) rounds and the first parallel 2-approximation algorithm in RNC. The algorithms generalize to covering mixed integer linear programs (CMIP) with two variables per constraint ($\delta$ = 2).
+
+For any covering problem with monotone constraints and submodular cost, a distributed $\delta$-approximation algorithm taking $O(\log{2} |C|)$ rounds, where $|C|$ is the number of constraints. (Special cases include CMIP, facility location, and probabilistic (two-stage) variants of these problems.)
+
+},
+	Address = {New York, NY, USA},
+	Annote = {Presents a number of algorithms to solve covering problems. The algorithm that is presented as a two approximation of the MWVC is a distributed version of the authors prior sequential algorithm. The algorithm does not require integer programing. The authors ignore the need for communication rounds and synchronization between nodes. },
+	Author = {Koufogiannakis, Christos and Young, Neal E.},
+	Bdsk-Color = {3439290111},
+	Booktitle = {PODC '09: Proceedings of the 28th ACM symposium on Principles of distributed computing},
+	Date-Added = {2012-07-09 18:07:43 +0000},
+	Date-Modified = {2012-07-09 18:07:43 +0000},
+	Isbn = {978-1-60558-396-9},
+	Keywords = {distributed covering, distributed vertex cover, Vertex cover},
+	Location = {Calgary, AB, Canada},
+	Pages = {171--179},
+	Publisher = {ACM},
+	Title = {Distributed and parallel algorithms for weighted vertex cover and other covering problems},
+	Year = {2009},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAa4AAAAAAa4AAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0BdwMTcxLWtvdWZvZ2lhbm5ha2lzLnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALU/JxxWHHlBERiAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAxxXNbgAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgBETWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAcDE3MS1rb3Vmb2dpYW5uYWtpcy5wZGYADgAwABcAcAAxADcAMQAtAGsAbwB1AGYAbwBnAGkAYQBuAG4AYQBrAGkAcwAuAHAAZABmAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAM1VzZXJzL3BhdWwvRG9jdW1lbnRzL0JpYmxpby9wMTcxLWtvdWZvZ2lhbm5ha2lzLnBkZgAAEwABLwAAFQACAAv//wAAgAXSHB0eH1gkY2xhc3Nlc1okY2xhc3NuYW1lox8gIV1OU011dGFibGVEYXRhVk5TRGF0YVhOU09iamVjdF8QNC4uLy4uLy4uLy4uL0RvY3VtZW50cy9CaWJsaW8vcDE3MS1rb3Vmb2dpYW5uYWtpcy5wZGbSHB0kJaIlIVxOU0RpY3Rpb25hcnkSAAGGoF8QD05TS2V5ZWRBcmNoaXZlcgAIABEAFgAfACgAMgA1ADoAPABFAEsAUgBdAGUAbABvAHEAcwB2AHgAegB8AIYAkwCYAKACUgJUAlkCYgJtAnECfwKGAo8CxgLLAs4C2wLgAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAvI=},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/1582716.1582746}}
+
+@article{1435381,
+	Address = {New York, NY, USA},
+	Annote = {Grandoni et al. provide a logarithmic time algorithm for computing the weighted vertex cover in a distributed manner. Their approach is to expand each vertex in the graph into $W$ vertexes, where $W$ is the weight of the vertex. These expanded vertexes are used to create a meta-graph, with the expanded vertexes of each edge connected to each other. A maximal matching is calculated on this meta-graph. If all of the expanded vertexes of an original vertex have an edge in the meta-graph matching, the vertex is placed in the cover.
+
+Because the number of expanded vertexes is dependent on weight, the matching will tend to prefer the lower weight nodes. In the paper, this intuition is formalized and it is proven that the method will generate better than 2-approximate solutions for weighted vertex cover.},
+	Author = {Grandoni, Fabrizio and K\"{o}nemann, Jochen and Panconesi, Alessandro},
+	Bdsk-Color = {3439290111},
+	Date-Added = {2012-07-09 18:07:27 +0000},
+	Date-Modified = {2012-07-09 18:07:27 +0000},
+	Issn = {1549-6325},
+	Journal = {ACM Trans. Algorithms},
+	Keywords = {Approximation algorithms, distributed algorithms, maximal matching, vertex cover},
+	Number = {1},
+	Pages = {1--12},
+	Publisher = {ACM},
+	Title = {Distributed weighted vertex cover via maximal matchings},
+	Volume = {5},
+	Year = {2008},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAY4AAAAAAY4AAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0A9hNi1ncmFuZG9uaS5wZGYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALT0Lx1ZNcFBERiAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAx1aTwAAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgA8TWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAYTYtZ3JhbmRvbmkucGRmAA4AIAAPAGEANgAtAGcAcgBhAG4AZABvAG4AaQAuAHAAZABmAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAK1VzZXJzL3BhdWwvRG9jdW1lbnRzL0JpYmxpby9hNi1ncmFuZG9uaS5wZGYAABMAAS8AABUAAgAL//8AAIAF0hwdHh9YJGNsYXNzZXNaJGNsYXNzbmFtZaMfICFdTlNNdXRhYmxlRGF0YVZOU0RhdGFYTlNPYmplY3RfECwuLi8uLi8uLi8uLi9Eb2N1bWVudHMvQmlibGlvL2E2LWdyYW5kb25pLnBkZtIcHSQloiUhXE5TRGljdGlvbmFyeRIAAYagXxAPTlNLZXllZEFyY2hpdmVyAAgAEQAWAB8AKAAyADUAOgA8AEUASwBSAF0AZQBsAG8AcQBzAHYAeAB6AHwAhgCTAJgAoAIyAjQCOQJCAk0CUQJfAmYCbwKeAqMCpgKzArgAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAACyg==},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/1435375.1435381}}
+
+@article{Gonzalez1995129,
+	Abstract = {We present a simple LP-free (i.e., not requiring linear programming) approximation algorithm for the minimum weight vertex cover problem. Our new approximation algorithm does not need to solve a linear programming problem, nor such a formulation is needed to establish its approximation bound. The algorithm takes linear time with respect to the number of nodes and edges in the graph, and generates solutions that are within twice the weight of a minimum weight vertex cover. Both the algorithm and its proof of correctness are elegant and simple.},
+	Annote = {Gonalez presents a short algorithm based on generalized maximal matching. Essentially. The algorithm takes linear time for the number of edges in the graph, by considering each edge of the graph in turn and choosing one of the two endpoints to add to the cover.
+
+Significantly, this algorithm can be trivially parallellized to run in $O(\Delta)$.},
+	Author = {Teofilo F. Gonzalez},
+	Bdsk-Color = {3439290111},
+	Date-Added = {2012-07-09 18:07:09 +0000},
+	Date-Modified = {2012-07-09 18:07:09 +0000},
+	Issn = {0020-0190},
+	Journal = {Information Processing Letters},
+	Keywords = {Analysis of algorithms, vertex cover},
+	Number = {3},
+	Pages = {129 - 131},
+	Title = {A simple LP-free approximation algorithm for the minimum weight vertex cover problem},
+	Volume = {54},
+	Year = {1995},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAbIAAAAAAbIAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0BgwMDIwLTAxOTAoOTUpMDAwMjItNS5wZGYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALRlqx2VSlgAAAAAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAx2WY5gAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgBFTWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAMDAyMC0wMTkwKDk1KTAwMDIyLTUucGRmAAAOADIAGAAwADAAMgAwAC0AMAAxADkAMAAoADkANQApADAAMAAwADIAMgAtADUALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASADRVc2Vycy9wYXVsL0RvY3VtZW50cy9CaWJsaW8vMDAyMC0wMTkwKDk1KTAwMDIyLTUucGRmABMAAS8AABUAAgAL//8AAIAF0hwdHh9YJGNsYXNzZXNaJGNsYXNzbmFtZaMfICFdTlNNdXRhYmxlRGF0YVZOU0RhdGFYTlNPYmplY3RfEDUuLi8uLi8uLi8uLi9Eb2N1bWVudHMvQmlibGlvLzAwMjAtMDE5MCg5NSkwMDAyMi01LnBkZtIcHSQloiUhXE5TRGljdGlvbmFyeRIAAYagXxAPTlNLZXllZEFyY2hpdmVyAAgAEQAWAB8AKAAyADUAOgA8AEUASwBSAF0AZQBsAG8AcQBzAHYAeAB6AHwAhgCTAJgAoAJWAlgCXQJmAnECdQKDAooCkwLLAtAC0wLgAuUAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAAC9w==},
+	Bdsk-Url-1 = {http://www.sciencedirect.com/science/article/B6V0F-3YYMRW7-1/2/f962550d6386e0771c6f68006ef0868f},
+	Bdsk-Url-2 = {http://dx.doi.org/10.1016/0020-0190(95)00022-5}}
+
+@article{Bar-Yehuda:1981lr,
+	Author = {Bar-Yehuda, R. and Even, S.},
+	Date-Added = {2012-07-09 18:06:49 +0000},
+	Date-Modified = {2012-07-09 18:06:49 +0000},
+	Journal = {J. of Algorithms},
+	Pages = {198-203},
+	Title = {A Linear-Time Approximation Algorithm for the Weighted Vertex Cover Problems},
+	Volume = {2},
+	Year = {1981}}
+
+@article{254190,
+	Abstract = { We survey approximation algorithms for some well-known and very natural combinatorial optimization problems, the minimum set covering, the minimum vertex covering, the maximum set packing, and maximum independent set problems; we discuss their approximation performance and their complexity. For already known results, any time we have conceived simpler proofs than those already published, we give these proofs, and, for the rest, we cite the simpler published ones. Finally, we discuss how one can relate the approximability behavior (from both a positive and a negative point of view) of vertex covering to the approximability behavior of a restricted class of independent set problems.  },
+	Address = {New York, NY, USA},
+	Annote = {This is a survey paper as indicated in the title. The authors offer solid theoretical background to each problem and psuedocode for each algorithm. A taxonomy of solutions to these problems is also presented. This paper is useful.},
+	Author = {Paschos, Vangelis T.},
+	Bdsk-Color = {3439290111},
+	Date-Added = {2012-07-09 18:06:36 +0000},
+	Date-Modified = {2012-07-09 18:06:36 +0000},
+	Issn = {0360-0300},
+	Journal = {ACM Comput. Surv.},
+	Keywords = {algorithm analysis, approximation algorithms, combinatorial algorithms, constrained optimization, problem complexity},
+	Number = {2},
+	Pages = {171--209},
+	Publisher = {ACM},
+	Title = {A survey of approximately optimal solutions to some covering and packing problems},
+	Volume = {29},
+	Year = {1997},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAZIAAAAAAZIAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0BBwMTcxLXBhc2Nob3MucGRmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALU/2x1R0QQAAAAAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAx1S6kQAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgA9TWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAcDE3MS1wYXNjaG9zLnBkZgAADgAiABAAcAAxADcAMQAtAHAAYQBzAGMAaABvAHMALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASACxVc2Vycy9wYXVsL0RvY3VtZW50cy9CaWJsaW8vcDE3MS1wYXNjaG9zLnBkZgATAAEvAAAVAAIAC///AACABdIcHR4fWCRjbGFzc2VzWiRjbGFzc25hbWWjHyAhXU5TTXV0YWJsZURhdGFWTlNEYXRhWE5TT2JqZWN0XxAtLi4vLi4vLi4vLi4vRG9jdW1lbnRzL0JpYmxpby9wMTcxLXBhc2Nob3MucGRm0hwdJCWiJSFcTlNEaWN0aW9uYXJ5EgABhqBfEA9OU0tleWVkQXJjaGl2ZXIACAARABYAHwAoADIANQA6ADwARQBLAFIAXQBlAGwAbwBxAHMAdgB4AHoAfACGAJMAmACgAjYCOAI9AkYCUQJVAmMCagJzAqMCqAKrArgCvQAAAAAAAAIBAAAAAAAAACgAAAAAAAAAAAAAAAAAAALP},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/254180.254190}}
+
+@incollection{Kanj:2009:LAE:1696884.1696902,
+	Acmid = {1696902},
+	Address = {Berlin, Heidelberg},
+	Author = {Kanj, Iyad A. and Wiese, Andreas and Zhang, Fenghui},
+	Chapter = {Local Algorithms for Edge Colorings in UDGs},
+	Date-Added = {2012-07-09 18:06:22 +0000},
+	Date-Modified = {2012-07-09 18:06:22 +0000},
+	Editor = {Paul, Christophe and Habib, Michel},
+	Isbn = {978-3-642-11408-3},
+	Keywords = {unit disk graphs, strong edge coloring graphs},
+	Numpages = {12},
+	Pages = {202--213},
+	Publisher = {Springer-Verlag},
+	Title = {Graph-Theoretic Concepts in Computer Science},
+	Year = {2010},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAdQAAAAAAdQAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0B9LYW5qLTIwMDktTEFFLTE2OTY4OCMyRDQ2MTkucGRmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALUYZyZkWqQAAAAAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAyZlc+QAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgBMTWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAS2Fuai0yMDA5LUxBRS0xNjk2ODgjMkQ0NjE5LnBkZgAOAEQAIQBLAGEAbgBqAC0AMgAwADAAOQAtAEwAQQBFAC0AMQA2ADkANgA4ADgANAAuADEANgA5ADYAOQAwADIALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAD1Vc2Vycy9wYXVsL0RvY3VtZW50cy9CaWJsaW8vS2Fuai0yMDA5LUxBRS0xNjk2ODg0LjE2OTY5MDIucGRmAAATAAEvAAAVAAIAC///AACABdIcHR4fWCRjbGFzc2VzWiRjbGFzc25hbWWjHyAhXU5TTXV0YWJsZURhdGFWTlNEYXRhWE5TT2JqZWN0XxA+Li4vLi4vLi4vLi4vRG9jdW1lbnRzL0JpYmxpby9LYW5qLTIwMDktTEFFLTE2OTY4ODQuMTY5NjkwMi5wZGbSHB0kJaIlIVxOU0RpY3Rpb25hcnkSAAGGoF8QD05TS2V5ZWRBcmNoaXZlcgAIABEAFgAfACgAMgA1ADoAPABFAEsAUgBdAGUAbABvAHEAcwB2AHgAegB8AIYAkwCYAKACeAJ6An8CiAKTApcCpQKsArUC9gL7Av4DCwMQAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAyI=},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1007/978-3-642-11409-0_18}}
+
+@inproceedings{Barenboim:2011:DDE:1993806.1993825,
+	Abstract = {We study the edge-coloring problem in the message-passing model of distributed computing. This is one of the most fundamental problems in this area. Currently, the best-known deterministic algorithms for (2Δ-1)-edge-coloring requires O(Δ) + log* n time [23], where Δ is the maximum degree of the input graph. Also, recent results of [5] for vertex-coloring imply that one can get an O(Δ)-edge-coloring in O(Δµ" log n) time, and an O(Δ1 + µ)-edge-coloring in O(log Δ log n) time, for an arbitrarily small constant µ > 0.
+
+In this paper we devise a significantly faster deterministic edge-coloring algorithm. Specifically, our algorithm computes an O(Δ)-edge-coloring in O(Δµ) + log* n time, and an O(Δ1 + µ)-edge-coloring in O(log Δ) + log* n time. This result improves the state-of-the-art running time for deterministic edge-coloring with this number of colors in almost the entire range of maximum degree Δ. Moreover, it improves it exponentially in a wide range of Δ, specifically, for 2{\copyright}(log* n) ≤ Δ ≤ polylog(n). In addition, for small values of Δ (up to log1 - ? n, for some fixed Δ > 0) our deterministic algorithm outperforms all the existing randomized algorithms for this problem.
+
+On our way to these results we study the vertex-coloring problem on graphs with bounded neighborhood independence. This is a large family of graphs, which strictly includes line graphs of r-hypergraphs (i.e., hypergraphs in which each hyperedge contains r or less vertices) for r = O(1), and graphs of bounded growth. We devise a very fast deterministic algorithm for vertex-coloring graphs with bounded neighborhood independence. This algorithm directly gives rise to our edge-coloring algorithms, which apply to general graphs.
+
+Our main technical contribution is a subroutine that computes an O(Δ/p)-defective p-vertex coloring of graphs with bounded neighborhood independence in O(p2) + log* n time, for a parameter p, 1 d p d Δ. In all previous efficient distributed routines for m-defective p-coloring the product m {\AA} p is super-linear in Δ. In our routine this product is linear in Δ, and this enables us to speed up the coloring drastically.},
+	Acmid = {1993825},
+	Address = {New York, NY, USA},
+	Author = {Barenboim, Leonid and Elkin, Michael},
+	Booktitle = {Proceedings of the 30th annual ACM SIGACT-SIGOPS symposium on Principles of distributed computing},
+	Date-Added = {2012-07-09 18:05:57 +0000},
+	Date-Modified = {2012-07-09 18:05:57 +0000},
+	Isbn = {978-1-4503-0719-2},
+	Keywords = {defective-coloring, legal-coloring, line-graphs},
+	Location = {San Jose, California, USA},
+	Numpages = {10},
+	Pages = {129--138},
+	Publisher = {ACM},
+	Series = {PODC '11},
+	Title = {Distributed deterministic edge coloring using bounded neighborhood independence},
+	Year = {2011},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAZoAAAAAAZoAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0BJwMTI5LWJhcmVuYm9pbS5wZGYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8++gyzXMNQAAAAAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAyzYShQAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgA/TWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAcDEyOS1iYXJlbmJvaW0ucGRmAAAOACYAEgBwADEAMgA5AC0AYgBhAHIAZQBuAGIAbwBpAG0ALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAC5Vc2Vycy9wYXVsL0RvY3VtZW50cy9CaWJsaW8vcDEyOS1iYXJlbmJvaW0ucGRmABMAAS8AABUAAgAL//8AAIAF0hwdHh9YJGNsYXNzZXNaJGNsYXNzbmFtZaMfICFdTlNNdXRhYmxlRGF0YVZOU0RhdGFYTlNPYmplY3RfEC8uLi8uLi8uLi8uLi9Eb2N1bWVudHMvQmlibGlvL3AxMjktYmFyZW5ib2ltLnBkZtIcHSQloiUhXE5TRGljdGlvbmFyeRIAAYagXxAPTlNLZXllZEFyY2hpdmVyAAgAEQAWAB8AKAAyADUAOgA8AEUASwBSAF0AZQBsAG8AcQBzAHYAeAB6AHwAhgCTAJgAoAI+AkACRQJOAlkCXQJrAnICewKtArICtQLCAscAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAAC2Q==},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/1993806.1993825}}
+
+@inproceedings{982945,
+	Abstract = {Packet-scheduling is a particular challenge in wireless networks due to interference from nearby transmissions. A distance-2 interference model serves as a useful abstraction here, and we study packet routing and scheduling under this model. The main focus of our work is the development of fully-distributed (decentralized) protocols. We present polylogarithmic/constant factor approximation algorithms for various families of disk graphs (which capture the geometric nature of wireless-signal propagation), as well as near-optimal approximation algorithms for general graphs. The packet-scheduling work by L eighton, Maggs and Rao (Combinatorica, 1994) and a basic distributed coloring procedure, originally due to Luby (J. Computer and System Sciences, 1993), underlie many of our algorithms. Experimental work of Finocchi, Panconesi, and Silvestri (SODA 2002) showed that a natural modification of Luby's algorithm leads to improved performance, and a rigorous explanation of this was left as an open question; we prove that the modified algorithm is provably better in the worst-case. Finally, using simulations, we study the impact of the routing strategy and the choice of parameters on the performance of our distributed algorithm for unit disk graphs.},
+	Address = {Philadelphia, PA, USA},
+	Author = {V. S. Anil Kumar and Madhav V. Marathe and Srinivasan Parthasarathy and Aravind Srinivasan},
+	Booktitle = {SODA '04: Proceedings of the fifteenth annual ACM-SIAM symposium on Discrete algorithms},
+	Date-Added = {2012-07-09 18:05:17 +0000},
+	Date-Modified = {2012-07-09 18:05:17 +0000},
+	Isbn = {0-89871-558-X},
+	Keywords = {simulation, strong coloring graphs, Unit Disk Graphs},
+	Location = {New Orleans, Louisiana},
+	Pages = {1021--1030},
+	Publisher = {Society for Industrial and Applied Mathematics},
+	Title = {End-to-end packet-scheduling in wireless ad-hoc networks},
+	Year = {2004},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAY4AAAAAAY4AAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0A9wMTAyMS1rdW1hci5wZGYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALUszxVjgz1BERiBwcnZ3AAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAxVknHwAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgA8TWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAcDEwMjEta3VtYXIucGRmAA4AIAAPAHAAMQAwADIAMQAtAGsAdQBtAGEAcgAuAHAAZABmAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAK1VzZXJzL3BhdWwvRG9jdW1lbnRzL0JpYmxpby9wMTAyMS1rdW1hci5wZGYAABMAAS8AABUAAgAL//8AAIAF0hwdHh9YJGNsYXNzZXNaJGNsYXNzbmFtZaMfICFdTlNNdXRhYmxlRGF0YVZOU0RhdGFYTlNPYmplY3RfECwuLi8uLi8uLi8uLi9Eb2N1bWVudHMvQmlibGlvL3AxMDIxLWt1bWFyLnBkZtIcHSQloiUhXE5TRGljdGlvbmFyeRIAAYagXxAPTlNLZXllZEFyY2hpdmVyAAgAEQAWAB8AKAAyADUAOgA8AEUASwBSAF0AZQBsAG8AcQBzAHYAeAB6AHwAhgCTAJgAoAIyAjQCOQJCAk0CUQJfAmYCbwKeAqMCpgKzArgAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAACyg==}}
+
+@article{1041515,
+	Abstract = { We conduct an experimental analysis of a distributed randomized algorithm for edge coloring simple undirected graphs. The algorithm is extremely simple yet, according to the probabilistic analysis, it computes nearly optimal colorings very quickly [Grable and Panconesi 1997]. We test the algorithm on a number of random as well as nonrandom graph families.The test cases were chosen based on two objectives: (i) to provide insights into the worst-case behavior (in terms of time and quality) of the algorithm and (ii) to test the performance of the algorithm with instances that are likely to arise in practice. Our main results include the following:(1) The empirical results obtained compare very well with the recent empirical results reported by other researchers [Durand et al. 1994, 1998; Jain and Werth 1995].(2) The empirical results confirm the bounds on the running time and the solution quality as claimed in the theoretical paper. Our results show that for certain classes of graphs the algorithm is likely to perform much better than the analysis suggests.(3) The results demonstrate that the algorithm might be well suited (from a theoretical as well as practical standpoint) for edge coloring graphs quickly and efficiently in a distributed setting.Based on our empirical study, we propose a simple modification of the original algorithm with substantially improved performance in practice.
+},
+	Address = {New York, NY, USA},
+	Annote = {This is the simplest possible algorithm for solving this problem in a distributed fashion. The algorithm consists of three steps. First, all uncolored edges choose a random color. Then all edges check for conflicts. Those that conflict release their color, those that do not become colored edges. This process is repeated until the algorithm runs out of colors or uncolored edges.
+
+The authors test this algorithm as well as a modified version that can add colors to its palette, against several types of graphs. They find that the modified algorithm performs well overall. },
+	Author = {Madhav V. Marathe and Alessandro Panconesi and Larry D. Risinger, jr},
+	Date-Added = {2012-07-09 18:05:04 +0000},
+	Date-Modified = {2012-07-09 18:05:04 +0000},
+	Issn = {1084-6654},
+	Journal = {J. Exp. Algorithmics},
+	Pages = {1.3},
+	Publisher = {ACM Press},
+	Title = {An experimental study of a simple, distributed edge-coloring algorithm},
+	Volume = {9},
+	Year = {2004},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAYoAAAAAAYoAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0A5wMS1tYXJhdGhlLnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALUonxVjgz1BERiBwcnZ3AAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAxVknHwAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgA7TWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAcDEtbWFyYXRoZS5wZGYAAA4AHgAOAHAAMQAtAG0AYQByAGEAdABoAGUALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASACpVc2Vycy9wYXVsL0RvY3VtZW50cy9CaWJsaW8vcDEtbWFyYXRoZS5wZGYAEwABLwAAFQACAAv//wAAgAXSHB0eH1gkY2xhc3Nlc1okY2xhc3NuYW1lox8gIV1OU011dGFibGVEYXRhVk5TRGF0YVhOU09iamVjdF8QKy4uLy4uLy4uLy4uL0RvY3VtZW50cy9CaWJsaW8vcDEtbWFyYXRoZS5wZGbSHB0kJaIlIVxOU0RpY3Rpb25hcnkSAAGGoF8QD05TS2V5ZWRBcmNoaXZlcgAIABEAFgAfACgAMgA1ADoAPABFAEsAUgBdAGUAbABvAHEAcwB2AHgAegB8AIYAkwCYAKACLgIwAjUCPgJJAk0CWwJiAmsCmQKeAqECrgKzAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAsU=},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/1005813.1041515}}
+
+@article{Panconesi:1997:RDE:249364.249368,
+	Abstract = {Certain types of routing, scheduling, and resource-allocation problems in a distributed setting can be modeled as edge-coloring problems. We present fast and simple randomized algorithms for edge coloring a graph in the synchronous distributed point-to-point model of computation. Our algorithms compute an edge coloring of a graph $G$ with $n$ nodes and maximum degree $\Delta$ with at most $1.6 \Delta + O(\log^{1+ \delta} n)$ colors with high probability (arbitrarily close to 1) for any fixed $\delta > 0$; they run in polylogarithmic time. The upper bound on the number of colors improves upon the $(2 \Delta - 1)$-coloring achievable by a simple reduction to vertex coloring.
+To analyze the performance of our algorithms, we introduce new techniques for proving upper bounds on the tail probabilities of certain random variables. The Chernoff--Hoeffding bounds are fundamental tools that are used very frequently in estimating tail probabilities. However, they assume stochastic independence among certain random variables, which may not always hold. Our results extend the Chernoff--Hoeffding bounds to certain types of random variables which are not stochastically independent. We believe that these results are of independent interest and merit further study.},
+	Acmid = {249368},
+	Address = {Philadelphia, PA, USA},
+	Author = {Panconesi, Alessandro and Srinivasan, Aravind},
+	Date-Added = {2012-07-09 18:04:51 +0000},
+	Date-Modified = {2012-07-09 18:04:51 +0000},
+	Doi = {10.1137/S0097539793250767},
+	Issn = {0097-5397},
+	Issue = {2},
+	Journal = {SIAM J. Comput.},
+	Keywords = {\$\lambda\$-correlation, Chernoff--Hoeffding bounds, correlation inequalities, distributed algorithms, edge coloring, large deviations, parallel algorithms, probabilistic algorithms, stochastic dependence},
+	Month = {April},
+	Numpages = {19},
+	Pages = {350--368},
+	Publisher = {Society for Industrial and Applied Mathematics},
+	Title = {Randomized Distributed Edge Coloring via an Extension of the Chernoff--Hoeffding Bounds},
+	Url = {http://dl.acm.org/citation.cfm?id=249364.249368},
+	Volume = {26},
+	Year = {1997},
+	Bdsk-Url-1 = {http://dl.acm.org/citation.cfm?id=249364.249368},
+	Bdsk-Url-2 = {http://dx.doi.org/10.1137/S0097539793250767}}
+
+@inproceedings{Grable:1997:NOD:314161.314266,
+	Abstract = {An  extremely  simple  distributed  randomized  edge  colouring  algorithm  is  given  which  produces  with  high probability  a  proper  edge  colouring  of  a given  graph  G using  (1 +&)A(G)  co 1 ours,  for  any  E >  0.  The  algorithm is  very  fast.  In  particular,  for  graphs  with  sufficiently large  vertex  degrees  (larger  than  polylog  n,  but  smaller than  any  positive  power  of  n),  the  algorithm  requires only  O(log  log  n)  communication  rounds. The  algorithm  is  inherently  distributed,  but  can  be implemented  on  the  PRAM,  where  it  requires  O(mA) processors  and  O(log  A  log  log  n)  time,  or  in  a  sequential  setting,  where  it  requires  O(mA)  time. },
+	Acmid = {314266},
+	Address = {Philadelphia, PA, USA},
+	Author = {Grable, David A. and Panconesi, Alessandro},
+	Booktitle = {Proceedings of the eighth annual ACM-SIAM symposium on Discrete algorithms},
+	Date-Added = {2012-07-09 18:04:33 +0000},
+	Date-Modified = {2012-07-09 18:04:33 +0000},
+	Isbn = {0-89871-390-0},
+	Location = {New Orleans, Louisiana, United States},
+	Numpages = {8},
+	Pages = {278--285},
+	Publisher = {Society for Industrial and Applied Mathematics},
+	Series = {SODA '97},
+	Title = {Nearly optimal distributed edge colouring in O(log log n) rounds},
+	Url = {http://dl.acm.org/citation.cfm?id=314161.314266},
+	Year = {1997},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAY4AAAAAAY4AAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0A9wMjc4LWdyYWJsZS5wZGYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACkb9my29qowAAAAAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAy2+w8wAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgA8TWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAcDI3OC1ncmFibGUucGRmAA4AIAAPAHAAMgA3ADgALQBnAHIAYQBiAGwAZQAuAHAAZABmAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAK1VzZXJzL3BhdWwvRG9jdW1lbnRzL0JpYmxpby9wMjc4LWdyYWJsZS5wZGYAABMAAS8AABUAAgAL//8AAIAF0hwdHh9YJGNsYXNzZXNaJGNsYXNzbmFtZaMfICFdTlNNdXRhYmxlRGF0YVZOU0RhdGFYTlNPYmplY3RfECwuLi8uLi8uLi8uLi9Eb2N1bWVudHMvQmlibGlvL3AyNzgtZ3JhYmxlLnBkZtIcHSQloiUhXE5TRGljdGlvbmFyeRIAAYagXxAPTlNLZXllZEFyY2hpdmVyAAgAEQAWAB8AKAAyADUAOgA8AEUASwBSAF0AZQBsAG8AcQBzAHYAeAB6AHwAhgCTAJgAoAIyAjQCOQJCAk0CUQJfAmYCbwKeAqMCpgKzArgAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAACyg==},
+	Bdsk-Url-1 = {http://dl.acm.org/citation.cfm?id=314161.314266}}
+
+@inproceedings{1146387,
+	Abstract = {Coloring the nodes of a graph with a small number of colors is one of the most fundamental problems in theoretical computer science. In this paper, we study graph coloring in a distributed setting. Processors of a distributed system are nodes of an undirected graph G. There is an edge between two nodes whenever the corresponding processors can directly communicate with each other. We assume that distributed coloring algorithms start with an initial m-coloring of G. In the paper, we prove new strong lower bounds for two special kinds of coloring algorithms. For algorithms which run for a single communication round---i.e., every node of the network can only send its initial color to all its neighbors---, we show that the number of colors of the computed coloring has to be at least $\Omega(\Delta2/log2 \Delta+ log log m)$. If such one-round algorithms are iteratively applied to reduce the number of colors step-by-step, we prove a time lower bound of $\Omega(\Delta/log2 \Delta+ log*m)$ to obtain an $O(\Delta)$-coloring. The best previous lower bounds for the two types of algorithms are $\Omega(log log m)$ and $\Omega(log*m)$, respectively. 
+},
+	Address = {New York, NY, USA},
+	Annote = {This is a greatly cited paper that places an lower bound on the running time of a class of distributed iterative coloring algorithms. These algorithms start by coloring the graph with $q$ colors, where $q$ is some number larger than $\Delta$. The authors show that there exists an algorithm which can produce a $q-coloring$ in a single round. After this coloring is produced, the method is to iteratively reduce the number of colors in the graph until reaching $O(\Delta)$. 
+
+The paper uses as a fundamental tool of analysis the concept of a "neighborhood graph". The Lifetime Dependency Graph presented in \cite{IPDPS.2008.45361} is a similar but more specialized structure that builds dependencies between solutions, rather than dependencies between local neighborhoods.
+
+The information gathering potential across the neighborhood graph forms the lower bound for deterministic algorithm. This bound is tested by a random algorithm. The authors prove the probability that a random algorithm could generate an $O(\Delta)$ coloring in a single round.},
+	Author = {Kuhn, Fabian and Wattenhofer, Roger},
+	Bdsk-Color = {3439290111},
+	Booktitle = {PODC '06: Proceedings of the twenty-fifth annual ACM symposium on Principles of distributed computing},
+	Date-Added = {2012-07-09 18:04:05 +0000},
+	Date-Modified = {2012-07-09 18:04:05 +0000},
+	Isbn = {1-59593-384-0},
+	Keywords = {chromatic number, distributed algorithms, graph coloring, locality, neighborhood graph, symmetry breaking},
+	Location = {Denver, Colorado, USA},
+	Pages = {7--15},
+	Publisher = {ACM},
+	Title = {On the complexity of distributed graph coloring},
+	Year = {2006},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAX4AAAAAAX4AAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0AtwNy1rdWhuLnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALWQ4xv0sOwAAAAAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAxv1kewAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgA4TWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAcDcta3Vobi5wZGYADgAYAAsAcAA3AC0AawB1AGgAbgAuAHAAZABmAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAJ1VzZXJzL3BhdWwvRG9jdW1lbnRzL0JpYmxpby9wNy1rdWhuLnBkZgAAEwABLwAAFQACAAv//wAAgAXSHB0eH1gkY2xhc3Nlc1okY2xhc3NuYW1lox8gIV1OU011dGFibGVEYXRhVk5TRGF0YVhOU09iamVjdF8QKC4uLy4uLy4uLy4uL0RvY3VtZW50cy9CaWJsaW8vcDcta3Vobi5wZGbSHB0kJaIlIVxOU0RpY3Rpb25hcnkSAAGGoF8QD05TS2V5ZWRBcmNoaXZlcgAIABEAFgAfACgAMgA1ADoAPABFAEsAUgBdAGUAbABvAHEAcwB2AHgAegB8AIYAkwCYAKACIgIkAikCMgI9AkECTwJWAl8CigKPApICnwKkAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAArY=},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/1146381.1146387}}
+
+@inproceedings{1498534,
+	Abstract = {We consider the problem of link scheduling in a sensor network employing a TDMA MAC protocol. Our link scheduling algorithm involves two phases. In the first phase, we assign a color to each edge in the network such that no two edges incident on the same node are assigned the same color. We propose a distributed edge coloring algorithm that needs at most ( delta;+1) colors, where delta; is the maximum degree of the graph. To the best of our knowledge, this is the first distributed algorithm that can edge color a graph with at most ( delta;+1) colors. In the second phase, we map each color to a unique timeslot and attempt to identify a direction of transmission along each edge such that the hidden terminal and the exposed terminal problems are avoided. Next, considering topologies for which a feasible solution does not exist, we obtain a direction of transmission for each edge using additional timeslots, if necessary. Finally, we show that reversing the direction of transmission along every edge leads to another feasible direction of transmission. Using both the transmission assignments we obtain a TDMA MAC schedule, which enables two-way communication between every pair of neighbors. For acyclic topologies, we show that at most 2( delta;+1) timeslots are required. Through simulations we show that for sparse graphs with cycles the number of timeslots assigned is close to 2( delta;+1).},
+	Author = {Gandham, S. and Dawande, M. and Prakash, R.},
+	Bdsk-Color = {4291585791},
+	Booktitle = {INFOCOM 2005. 24th Annual Joint Conference of the IEEE Computer and Communications Societies. Proceedings IEEE},
+	Date-Added = {2012-07-09 18:03:52 +0000},
+	Date-Modified = {2012-07-09 18:03:52 +0000},
+	Issn = {0743-166X},
+	Keywords = {TDMA MAC protocol; acyclic topology; distributed edge coloring algorithm; link scheduling; sensor network; sparse graph; access protocols; graph theory; scheduling; telecommunication links; telecommunication network topology; time division multiple access; wireless sensor networks;},
+	Month = {March},
+	Pages = {2492 - 2501 vol. 4},
+	Title = {Link scheduling in sensor networks: distributed edge coloring revisited},
+	Volume = {4},
+	Year = {2005},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAX4AAAAAAX4AAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0AsxNDk4NTM0LnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALTGfyGKx21BERiAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAyGLqGwAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgA4TWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAMTQ5ODUzNC5wZGYADgAYAAsAMQA0ADkAOAA1ADMANAAuAHAAZABmAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAJ1VzZXJzL3BhdWwvRG9jdW1lbnRzL0JpYmxpby8xNDk4NTM0LnBkZgAAEwABLwAAFQACAAv//wAAgAXSHB0eH1gkY2xhc3Nlc1okY2xhc3NuYW1lox8gIV1OU011dGFibGVEYXRhVk5TRGF0YVhOU09iamVjdF8QKC4uLy4uLy4uLy4uL0RvY3VtZW50cy9CaWJsaW8vMTQ5ODUzNC5wZGbSHB0kJaIlIVxOU0RpY3Rpb25hcnkSAAGGoF8QD05TS2V5ZWRBcmNoaXZlcgAIABEAFgAfACgAMgA1ADoAPABFAEsAUgBdAGUAbABvAHEAcwB2AHgAegB8AIYAkwCYAKACIgIkAikCMgI9AkECTwJWAl8CigKPApICnwKkAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAArY=},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1109/INFCOM.2005.1498534}}
+
+@inproceedings{1598948,
+	Abstract = {We give efficient sequential and distributed approximation algorithms for strong edge coloring graphs modeling wireless networks. Strong edge coloring is equivalent to computing a conflict-free assignment of channels or frequencies to pairwise links between transceivers in the network},
+	Author = {Barrett, C.L. and Istrate, G. and Kumar, V.S.A. and Marathe, M.V. and Thite, S. and Thulasidasan, S.},
+	Booktitle = {Pervasive Computing and Communications Workshops, 2006. PerCom Workshops 2006. Fourth Annual IEEE International Conference on},
+	Date-Added = {2012-07-09 18:03:31 +0000},
+	Date-Modified = {2012-07-09 18:03:31 +0000},
+	Keywords = {channel assignment;distributed approximation;sequential approximation;strong edge coloring graphs;wireless radio networks;approximation theory;channel allocation;distributed algorithms;graph colouring;radio networks;},
+	Month = march,
+	Pages = {5 pp. -110},
+	Title = {Strong edge coloring for channel assignment in wireless radio networks},
+	Year = {2006},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUIJidUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABqAkKFRYXGyIjVSRudWxs0wsMDQ4RFFpOUy5vYmplY3RzV05TLmtleXNWJGNsYXNzog8QgASABqISE4ACgAOAB1lhbGlhc0RhdGFccmVsYXRpdmVQYXRo0hgNGRpXTlMuZGF0YU8RAYIAAAAAAYIAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAAMmuUv1IKwAAAC0O0AwwMTU5ODk0OC5wZGYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALSF8yWnG/FBERiAAAAAAAAQAAwAACSAAAAAAAAAAAAAAAAAAAAAGQmlibGlvABAACAAAya6LPQAAABEACAAAyWoNTAAAAAEAEAAtDtAALQEHABL3AwAJtHgAAgA5TWFjaW50b3NoIEhEOlVzZXJzOgBwYXVsOgBEb2N1bWVudHM6AEJpYmxpbzoAMDE1OTg5NDgucGRmAAAOABoADAAwADEANQA5ADgAOQA0ADgALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAChVc2Vycy9wYXVsL0RvY3VtZW50cy9CaWJsaW8vMDE1OTg5NDgucGRmABMAAS8AABUAAgAL//8AAIAF0hwdHh9YJGNsYXNzZXNaJGNsYXNzbmFtZaMfICFdTlNNdXRhYmxlRGF0YVZOU0RhdGFYTlNPYmplY3RfECkuLi8uLi8uLi8uLi9Eb2N1bWVudHMvQmlibGlvLzAxNTk4OTQ4LnBkZtIcHSQloiUhXE5TRGljdGlvbmFyeRIAAYagXxAPTlNLZXllZEFyY2hpdmVyAAgAEQAWAB8AKAAyADUAOgA8AEUASwBSAF0AZQBsAG8AcQBzAHYAeAB6AHwAhgCTAJgAoAImAigCLQI2AkECRQJTAloCYwKPApQClwKkAqkAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAACuw==},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1109/PERCOMW.2006.129}}
+
+@inproceedings{Daigle:2011uq,
+	Author = {J. Paul Daigle and Sushil K. Prasad},
+	Booktitle = {Proceedings of the 25th IEEE International Parallel \& Distributed Processing Symposium, Workshops and Phd Forum},
+	Date-Added = {2012-07-09 18:03:10 +0000},
+	Date-Modified = {2012-07-09 18:03:10 +0000},
+	Keywords = {distributed algorithm, matching, vertex cover},
+	Month = {May},
+	Publisher = {IEEE Computer Society},
+	Title = {A Matching Based Automata for Distributed Graph Algorithms},
+	Year = {2011}}
