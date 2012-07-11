@@ -1,0 +1,5 @@
+\begin{defi}[Directed Edge Coloring]
+Given a directed graph $G(V,E)$, and a set of colors $C$, where an edge $e u \rightarrow v$ is indicated $e(u,v)$, an edge coloring of $G$ is a mapping $f(e) = E \mapsto C \suchthat \forall\, e(u,v), e'(v,w) \in E, c \in C, f(e) = c \implies f(e') \ne c$.
+
+This definition is identical in form to the definition of edge coloring, but the meaning is slightly different. If the graph is not directed, than the endpoints are interchangeable, Definition~\ref{def:ec} could also read $\forall\, e(u,v), e(u,w)$. In a directed graph, however, this is not the case. An edge $(u,w)$ can be the same color as an edge $(u,v)$. 
+\end{defi}
