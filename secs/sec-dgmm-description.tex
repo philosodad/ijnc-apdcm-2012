@@ -1,0 +1,24 @@
+\label{sec:dgmm-description}
+
+Algorithm~\ref{alg:dgmm} is our distributed implementation of the 2-optimal minimum weighted vertex cover algorithm presented by Gonzalez \cite{Gonzalez1995129}. The Gonzalez algorithm, Generalized Maximal Matching for MWVC (or GMM), proceeds by selecting each edge in turn and choosing one of the endpoints of that edge to add to the cover. The sequential algorithm goes through each edge in turn and assigns the edge a weight according to~\eqref{eqn:gmm}.
+
+\input{eqns/eqn-gmm.tex}
+
+So if there are no previously weighted edges incident to either endpoint, the weight of the edge is $min(w(u),w(v))$. A vertex $u$ joins the cover when, for all it's weighted edges: \begin{equation}\sum_i w(e(u,i)) = w(u) \label{eqn:sat} \end{equation} When~\eqref{eqn:gmm} is applied to subsequent unweighted incident edges of $u$, the result will be 0. The algorithm terminates when each edge has been weighted. 
+
+In GMM, every edge is examined exactly once. If no endpoints of the edge are in the cover, one endpoint will join the cover. Finally, all the edges are evaluated in arbitrary order. We explore this third point further in Section~\ref{ssb:algorithms-dgmm-performance}. 
+
+Our distributed version of the algorithm chooses some disjoint set of edges (a matching) and assigns weights to those edges according to~\eqref{eqn:gmm}. The framework automata is used to construct the set of disjoint edges in the following manner.\footnote{For the following description, we will substitute the symbol $\varpi(u)$ for the term $\sum_i w(e(u,i))$ in~\eqref{eqn:gmm}.\label{fn:varpi}}
+
+Each node begins in the \cCd\ state. In the first step, each node chooses to transition to state \cId\ or \cLd\ with equal probability. Each node $u$ in the \cId\ state chooses an unweighted edge $e(u,v)$ at random, and broadcasts an invitation containing its incident edge weight ($\varpi(u)$)\footnotemark[\value{footnote}] and the edge it wants to weight. Each node $v$ in the \cLd\ state collects the invitations that contain an edge $e(i,v)$.
+
+For the next step, nodes in the \cLd\ state transition to the \cRd\ state, and nodes in the \cId\ state transition to the \cWd\ state. Each node $v$ in the \cLd\ state chooses an invitation it collected in the prior step and issues a response containing $\varpi(v)$ and the edge $e(u,v)$ that it agrees to weight. Each node in the \cWd\ state filters these responses for the one containing an edge $e(u,i)$ (that is, a response to the invitation it sent in the prior round). 
+
+At this point, there are a number of node pairs in the graph, every node $u$ that sent an invitation to weight an edge $e(u,v)$ forms a pair with $v$ if $v$ responds with an agreement to weight $e(u,v)$. The edges that will be weighted in this round are a matching.
+
+Every node now transitions to the \cUd\ state. Those that have formed node pairs weight the edge $e(u,v)$ according to~\eqref{eqn:gmm}. One of $u,v$ will join the cover at this point. For brevity, in Algorithm~\ref{alg:dgmm}, the \cUd\ state is implied in lines~\algref{alg:dgmm}{alglin:dgmm-update-weight-R} and \algref{alg:dgmm}{alglin:dgmm-update-weight-W}.
+
+Every node now transitions to the \cEd\ state, and broadcasts its current status to its neighbors. If a node $v$ receives a message that a neighbor $u$ has joined the cover $v$ will assign a weight of 0 to $e(u,v)$ and remove $e(u,v)$ from its list of unweighted edges. Again for brevity, the \cEd\ state is executed by implication in lines~\algref{alg:dgmm}{alglin:dgmm-state-E-W} and \algref{alg:dgmm}{alglin:dgmm-state-E}.
+
+Every node that is in the cover now transitions to the \cDd\ state, as does any node that has no unweighted edges remaining. Nodes that still have unweighted edges go back to the \cCd\ state and repeat the process. 
+

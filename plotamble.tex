@@ -1,17 +1,18 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
-\pgfplotstableread{plts/experiment_erdren_edgecolor.tab}\erdrenone
-\pgfplotstableread{plts/experiment_erdren_edgecolor_400.tab}\erdrentwo
-\pgfplotstableread{plts/experiment_erdren_directededgecolor.tab}\erddirone
-\pgfplotstableread{plts/experiment_erdren_directededgecolor_400.tab}\erddirtwo
-\pgfplotstableread{plts/experiment_sclfre_edgecolor.tab}\sclfreeone
-\pgfplotstableread{plts/experiment_sclfre_edgecolor_400.tab}\sclfreetwo
-\pgfplotstableread{plts/experiment_smlwld_edgecolor.tab}\smlwldone
-\pgfplotstableread{plts/experiment_smlwld_edgecolor_64.tab}\smlwldtwo
-\pgfplotstableread{plts/experiment_smlwld_edgecolor_256.tab}\smlwldthree
-%\pgfplotstableread{plts/experiment8b2_av.tab}\averagetwo
-%\pgfplotstableread{plts/experiment8b3_av.tab}\averagethree
-%\pgfplotstableread{plts/experiment8b4_av.tab}\averagefour
+%\pgfplotstableread{plts/experiment_erdren_edgecolor.tab}\erdrenone
+%\pgfplotstableread{plts/experiment_erdren_edgecolor_400.tab}\erdrentwo
+%\pgfplotstableread{plts/experiment_erdren_directededgecolor.tab}\erddirone
+%\pgfplotstableread{plts/experiment_erdren_directededgecolor_400.tab}\erddirtwo
+%\pgfplotstableread{plts/experiment_sclfre_edgecolor.tab}\sclfreeone
+%\pgfplotstableread{plts/experiment_sclfre_edgecolor_400.tab}\sclfreetwo
+%\pgfplotstableread{plts/experiment_smlwld_edgecolor.tab}\smlwldone
+%\pgfplotstableread{plts/experiment_smlwld_edgecolor_64.tab}\smlwldtwo
+%\pgfplotstableread{plts/experiment_smlwld_edgecolor_256.tab}\smlwldthree
+\pgfplotstableread{plts/experiment8b1_av.tab}\averageone
+\pgfplotstableread{plts/experiment8b2_av.tab}\averagetwo
+\pgfplotstableread{plts/experiment8b3_av.tab}\averagethree
+\pgfplotstableread{plts/experiment8b4_av.tab}\averagefour
 %\pgfplotstableread{plts/experiment9a_av.tab}\stepping
 %\pgfplotstableread{plts/experiment9a1_av.tab}\steppingone
 %\pgfplotstableread{plts/experiment9a2_av.tab}\steppingtwo
@@ -26,66 +27,66 @@
 %\pgfplotstableread{plts/experiment9c1_av.tab}\costcompone
 %\pgfplotstableread{plts/experiment9c2_av.tab}\costcomptwo
 %\pgfplotstableread{plts/experiment9c3_av.tab}\costcompthree
-%\pgfplotstableread{plts/experiment8b1_rn.tab}\runsone
-%\pgfplotstableread{plts/experiment8b2_rn.tab}\runstwo
-%\pgfplotstableread{plts/experiment8b3_rn.tab}\runsthree
-%\pgfplotstableread{plts/experiment8b4_rn.tab}\runsfour
-%\pgfplotstableset{
-%  create on use/density/.style={
-%    create col/expr={\thisrow{nodes}+\thisrow{links}}}
-%    }
+\pgfplotstableread{plts/experiment8b1_rn.tab}\runsone
+\pgfplotstableread{plts/experiment8b2_rn.tab}\runstwo
+\pgfplotstableread{plts/experiment8b3_rn.tab}\runsthree
+\pgfplotstableread{plts/experiment8b4_rn.tab}\runsfour
+\pgfplotstableset{
+  create on use/density/.style={
+    create col/expr={\thisrow{nodes}+\thisrow{links}}}
+    }
 \pgfplotstableset{
   create on use/delta/.style={
     create col/expr={\thisrow{links}/\thisrow{nodes}}
     }}
-%\pgfplotstableset{
-%  create on use/nodebylinks/.style={
-%    create col/expr={(\thisrow{nodes}*\thisrow{links})}}
-%    }
-%\pgfplotscreateplotcyclelist{three}{% 
-%  every mark/.append style={fill=teal}\\% 
-%  every mark/.append style={fill=green}\\% 
-%  every mark/.append style={fill=orange}\\% 
-%}
-%\pgfplotscreateplotcyclelist{four}{%
-%  every mark/.append style={fill=teal}\\%
-%  every mark/.append style={fill=green}\\%
-%  every mark/.append style={fill=orange}\\%
-%  every mark/.append style={fill=pink}\\%
-%}
-%\pgfplotscreateplotcyclelist{three-1-0}{%
-%  every mark/.append style={fill=teal}\\% 
-%  every mark/.append style={fill=green}\\% 
-%  every mark/.append style={fill=orange}\\%
-%	every mark/.append style={fill=none}\\% 
-%	every mark/.append style={fill=none}\\% 
-%	every mark/.append style={fill=none}\\% 
-%}
-%\pgfplotscreateplotcyclelist{three-0-1}{%
-%	every mark/.append style={fill=none}\\% 
-%	every mark/.append style={fill=none}\\% 
-%	every mark/.append style={fill=none}\\% 
-%  every mark/.append style={fill=teal}\\% 
-%  every mark/.append style={fill=green}\\% 
-%  every mark/.append style={fill=orange}\\%
-%}
-%\pgfplotscreateplotcyclelist{four-1-0}{%
-%  every mark/.append style={fill=teal}\\%
-%  every mark/.append style={fill=green}\\%
-%  every mark/.append style={fill=orange}\\%
-%  every mark/.append style={fill=pink}\\%
-%	every mark/.append style={fill=none}\\%
-%	every mark/.append style={fill=none}\\%
-%	every mark/.append style={fill=none}\\%
-%	every mark/.append style={fill=none}\\%
-%}
-%\pgfplotscreateplotcyclelist{four-0-1}{%
-%	every mark/.append style={fill=none}\\%
-%	every mark/.append style={fill=none}\\%
-%	every mark/.append style={fill=none}\\%
-%	every mark/.append style={fill=none}\\%
-%  every mark/.append style={fill=teal}\\%
-%  every mark/.append style={fill=green}\\%
-%  every mark/.append style={fill=orange}\\%
-%  every mark/.append style={fill=pink}\\%
-%}
+\pgfplotstableset{
+  create on use/nodebylinks/.style={
+    create col/expr={(\thisrow{nodes}*\thisrow{links})}}
+    }
+\pgfplotscreateplotcyclelist{three}{% 
+  every mark/.append style={fill=teal}\\% 
+  every mark/.append style={fill=green}\\% 
+  every mark/.append style={fill=orange}\\% 
+}
+\pgfplotscreateplotcyclelist{four}{%
+  every mark/.append style={fill=teal}\\%
+  every mark/.append style={fill=green}\\%
+  every mark/.append style={fill=orange}\\%
+  every mark/.append style={fill=pink}\\%
+}
+\pgfplotscreateplotcyclelist{three-1-0}{%
+  every mark/.append style={fill=teal}\\% 
+  every mark/.append style={fill=green}\\% 
+  every mark/.append style={fill=orange}\\%
+	every mark/.append style={fill=none}\\% 
+	every mark/.append style={fill=none}\\% 
+	every mark/.append style={fill=none}\\% 
+}
+\pgfplotscreateplotcyclelist{three-0-1}{%
+	every mark/.append style={fill=none}\\% 
+	every mark/.append style={fill=none}\\% 
+	every mark/.append style={fill=none}\\% 
+  every mark/.append style={fill=teal}\\% 
+  every mark/.append style={fill=green}\\% 
+  every mark/.append style={fill=orange}\\%
+}
+\pgfplotscreateplotcyclelist{four-1-0}{%
+  every mark/.append style={fill=teal}\\%
+  every mark/.append style={fill=green}\\%
+  every mark/.append style={fill=orange}\\%
+  every mark/.append style={fill=pink}\\%
+	every mark/.append style={fill=none}\\%
+	every mark/.append style={fill=none}\\%
+	every mark/.append style={fill=none}\\%
+	every mark/.append style={fill=none}\\%
+}
+\pgfplotscreateplotcyclelist{four-0-1}{%
+	every mark/.append style={fill=none}\\%
+	every mark/.append style={fill=none}\\%
+	every mark/.append style={fill=none}\\%
+	every mark/.append style={fill=none}\\%
+  every mark/.append style={fill=teal}\\%
+  every mark/.append style={fill=green}\\%
+  every mark/.append style={fill=orange}\\%
+  every mark/.append style={fill=pink}\\%
+}

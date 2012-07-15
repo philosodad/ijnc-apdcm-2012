@@ -1,0 +1,61 @@
+\begin{algorithm}
+\caption{Distributed Maximal-Matching-based Minimum-Weighted Vertex Cover  Algorithm (DGMM)}
+\begin{algorithmic}[1]
+%\Require {$G(V,E)$: a Communicaton Network}
+\ForAll {$v_u \in V$ in parrallel}
+\State $S_u \leftarrow False$ \Comment $u$ is not in the cover
+\State state $\leftarrow$ \cCd
+\Repeat
+\State Broadcast $S_u$
+\If {$S_v = True$ for $v_v$ incident to self}
+\State Set Weight $e_{u,v} \leftarrow 0$ \label{alglin:dgmm-state-E}
+\EndIf
+\If {state = \cCd}
+\State {State $\gets (\cI \lor \cL)$} \Comment Coin toss selects state
+\ElsIf {state = \cId}
+\State {Randomly select an unweighted edge, $e_{u,v}$}\label{alglin:dgmm-issue-invite}
+\State {Broadcast $I_u^v$} \Comment $u$ Invites $v$ to weight $e_{u,v}$ 
+\State {state $\leftarrow$ \cWd}
+\ElsIf {state = \cLd}
+\State {Recieve $I_x^y$} \Comment all local invites
+\If {$y = u$} \Comment invite is targeted to $v_u$
+\State {store $I_x^y$}
+\EndIf
+\State {State $\gets \cR$}
+
+\ElsIf {state = \cRd}
+\State {Randomly Select $I_v^u$} \Comment from stored invites \label{alglin:dgmm-choose-invite}
+\State {Broadcast $R_u^v$} \Comment $u$ accepts $v's$ invitation
+\State {Update Weight $e_{u,v}$} \Comment by Equation~\ref{eqn:gmm} \label{alglin:dgmm-update-weight-R}
+
+\If {$\sum w(e(i,u)) = w(u)$}\label{alglin:dgmm-join-cover-R}
+\State {$S_u \gets true$} \Comment $u$ joins the cover
+\State {Set all unweighted edges to 0} 
+\State {state $\gets \cD$}
+\Else 
+\State {state $\gets \cC$}
+\EndIf
+
+\ElsIf {state = \cWd}
+\State {Recieve $R_x^y$} \Comment all local responses
+
+\If {$y = u$} \Comment response is to $v_u$
+\State {Update Weight $e_{u,v}$}\label{alglin:dgmm-update-weight-W}
+
+\If {$\sum w(e(i,u)) = w(u)$}\label{alglin:dgmm-join-cover-W}
+\State $S_u \leftarrow true$ \Comment $u$ joins the cover
+\State {Set all unweighted edges to 0}\label{alglin:dgmm-state-E-W}
+\State {state $\leftarrow$ \cDd}
+\Else 
+\State {state $\leftarrow$ \cCd}
+\EndIf
+
+\EndIf
+
+\EndIf
+
+\Until {$S_u = true$ OR $S_v = true$  $\forall v_v$ incident $v_u$}\label{alglin:dgmm-end-while}
+\EndFor
+\end{algorithmic}
+\label{alg:dgmm}
+\end{algorithm}

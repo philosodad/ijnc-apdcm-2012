@@ -1,0 +1,29 @@
+\begin{figure}[htp]
+  \begin{center}
+  \begin{tikzpicture}[shorten >=1pt,node distance=1cm,on grid,auto, bend angle=75, every state/.style={scale=1, minimum size=18pt, inner sep=2pt}]
+    %\draw [help lines] (-5,-4) grid (7,4);
+    \path [help lines] (-4,-4) grid (7,4);
+		
+    \node [rst, initial]   (C) at (-3,-1) {\cCd: Choose role by coin coss};
+    \node [rst] (I)            at (-1.5,1.5) {\cId: Invite a neighbor};
+    \node [rst] (L)            at (-1.5,-3.5) {\cLd: Listen for local invites};
+    \node [rst] (W)            at (3,1.5)  {\cWd: Wait for response};
+    \node [rst] (R)            at (3,-3.5) {\cRd: Respond to 1 invite};
+    \node [rst] (U)            at (4.5,-1) {\cUd: Update subproblem solutions};
+    \node [rst, accepting] (D) at (4.5,4)  {\cDd: Done};
+
+    \path [->] (C) edge              node [near start] {heads} (I)
+               (C) edge              node [near end, left] {tails} (L)
+               (L) edge              node {} (R)
+               (I) edge              node {} (W)
+               (W) edge              node {} (U)
+               (R) edge              node {} (U);
+    \path [->] (U) edge [bend right=30]             node [very near end, left, text width=2cm] {finished all subproblems} (D);
+    \path [->] (W) edge  node {} (U);
+    \path [->] (U) edge  node [above, text width=2cm] {unresolved subproblems} (C);
+
+  \end{tikzpicture}
+  \caption{Distributed Matching and Computation Automata}
+  \label{fig:automata}
+  \end{center}
+\end{figure}

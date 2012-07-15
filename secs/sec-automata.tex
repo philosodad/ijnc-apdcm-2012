@@ -1,0 +1,16 @@
+
+\label{sec:framework}
+Our framework relies on a simple handshake protocol, represented by the state machine in Figure~\ref{fig:automata}.
+
+Our approach is to have all of the compute nodes participate in forming a matching $V' \subset V$. The first three steps of the automata show our method for forming this matching. Having formed the matching, the nodes that are in $V'$ compute local solutions and broadcast them to all of their neighbors. This continues until every necessary local solution has been found. 
+\input{figs/fig-automata.tex}
+
+Each node begins a decision round in the \cCd, or {\em choose} state, and chooses randomly whether to transition to the \cId\ or \cLd\ state. Nodes in the \cId\ state choose a single neighbor with a shared subproblem (such as covering or coloring a shared edge) and issue an {\em invitation} to solve that subproblem in this round. 
+
+An invitation should contain all of the information that the invitee needs to compute the solution to the subproblem for this round. For example, if the problem being solved is edge coloring, a node would send it's own id, the id of the intended reciever, and a set of potential colors. Nodes in the \cLd\ state collect any invitations addressed to them. 
+
+In the next step, each node that was in the \cLd\ state transitions to the \cRd\ state, chooses a single invitation from their collection and responds to that invitation. An invitation response is essentially a mirror of the original invitation, containing the id of the responding node, the id of the original sender, and an acceptable solution to the subproblem. 
+
+Nodes in the \cId\ state transition to \cWd\ state and filter incoming messages for the response to the invitation that they sent in the previous step. 
+
+Finally, all nodes transition to the \cUd\ state, solve their local subproblem, and broadcast their solutions. Nodes with no outstanding problems to be solved transition to \cDd\ and terminate, nodes with outstanding sub-problems go back to \cCd.

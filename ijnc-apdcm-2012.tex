@@ -71,7 +71,8 @@ We present an automata for a compute node in a message passing model which allow
 
 \section{Introduction}
 
-In this paper we'll show the automata itself, then our results for vertex cover and edge color.
+In this paper we expand on our prior work in \cite{Daigle:2011uq, Daigle:2012uq} using a simple Matching Automata to find constant approximations for NP-complete problems on a message passing computer. We present both theoretical and experimental results. We improve on our prior work in two ways, first, we improve our proof for correctness and performance, second, we present expanded experimental results, and third, we present an improved algorithm for edge color.
+
 
 \subsection{Definitions}
 
@@ -79,26 +80,30 @@ In this paper we'll show the automata itself, then our results for vertex cover 
 \input{defs/def-mwvc}
 \input{defs/def-edge-color}
 \input{defs/def-strong-directed-edge-color}
+\subsection{The Model and Automata}
+
+\subsubsection{The Message Passing Model}
+\input{secs/sec-message-passing}
+\subsubsection{The Matching Automata}
+\input{secs/sec-automata}
+
 \subsection{Prior Work}
 
 \subsubsection{Vertex Cover}
 
-Sequential Linear time algorithms for covering problems are surveyed in detail in \cite{254190}. The seminal paper on Linear Programming techniques for constant ratio approximation of MWVC was published by Bar-Yehuda and Even in 1981 \cite{Bar-Yehuda:1981lr}. Gonzalez created a 2-approximate LP-Free linear time algorithm based on Maximal Matching in 1995 which is the basis of our distributed algorithm \cite{Gonzalez1995129}. 
-
-We are aware of two prior distributed algorithms for minimum weighted vertex cover. Grandoni et. al present a 2-approximate algorithm based on maximal matching in 2008\cite{1435381}. This algorithm uses $O(\log n + \hat{W})$ communication rounds, where $\hat{W}$ is the average vertex weight, and $n$ is the number of vertexes. {\AA}strand and Suomela presented a $O(\Delta + \hat{W})$ deterministic algorithm in 2010 which is also 2-approximate. Koufogiannakis and Young present a simpler $O(\log n)$ algorithm in 2009 \cite{1582746}. 
-
-Parnas and Ron argue in 2007 that the growth of a randomized algorithm for solving MWVC in a message passing model is linear with the average degree of the graph\cite{Parnas:2007:AMV:1280283.1280327}. Following that work, Onak, Ron, Rosen and Rubinfeld present a deterministic algorithm that 2-approximate in $O(\delta)$ time, where $\delta$ is the average degree of the graph\cite{Onak:2012:NSA:2095116.2095204}. Our own experimental results and algorithm proof appear to conflict with this work, possibly because of differnces between the models of computing. 
+\input{secs/sec-prior-vertex}
 
 \subsubsection{Edge Coloring}
+
+\input{secs/sec-prior-edge}
 
 \section{The Vertex Cover Problem}
 
 In this section we'll present the findings for Vertex Cover.
 
 \subsection{Algorithm}
-
-In this section we'll show the algorithm for vertex cover.
-
+\input{secs/sec-dgmm-description}
+\input{algs/alg-dgmm.tex}
 \subsection{Analysis}
 
 \label{ssb:algorithms-dgmm-performance}
@@ -109,7 +114,7 @@ Despite its overall simplicity, Algorithm~\ref{alg:dgmm} has a running time of $
 
 \subsection{Experimental Design and Results}
 
-In this section we'll present the design and results of our experiments.
+\input{secs/sec-vertex-experiment}
 
 \section{Edge Coloring Problem}
 

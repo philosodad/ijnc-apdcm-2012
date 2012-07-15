@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+  \begin{axis}[xlabel=Average Degree, ylabel=Communication Rounds, legend style={at={(0.95,0.95)}, font=\footnotesize, label={[font=\footnotesize]left:K/Y}, anchor=north east}, legend columns=2, cycle list name={four-1-0}]
+    \addplot+[grt] table [x=links, y=star-reg]{\runsone};
+    \addplot+[grt] table [x=links, y=star-reg]{\runstwo};
+    \addplot+[grt] table [x=links, y=star-reg]{\runsthree};
+    \addplot+[grt] table [x=links, y=star-reg]{\runsfour};
+    \addplot+[inv] table [x=links, y=mat-reg]{\runsone};
+    \addplot+[inv] table [x=links, y=mat-reg]{\runstwo};
+    \addplot+[inv] table [x=links, y=mat-reg]{\runsthree};
+    \addplot+[inv] table [x=links, y=mat-reg]{\runsfour};
+    \legend{(120),(240),(480),(960)}
+  \end{axis}
+  \begin{axis}[axis x line=none, axis y line=none, legend style={at={(0.05,0.425)}, font=\footnotesize, label={[font=\footnotesize]above left:DGMM}, anchor=north west}, legend columns=2, cycle list name={four-0-1}]
+    \addplot+[inv] table [x=links, y=star-reg]{\runsone};
+    \addplot+[inv] table [x=links, y=star-reg]{\runstwo};
+    \addplot+[inv] table [x=links, y=star-reg]{\runsthree};
+    \addplot+[inv] table [x=links, y=star-reg]{\runsfour};
+    \addplot+[bls] table [x=links, y=mat-reg]{\runsone};
+    \addplot+[bls] table [x=links, y=mat-reg]{\runstwo};
+    \addplot+[bls] table [x=links, y=mat-reg]{\runsthree};
+    \addplot+[bls] table [x=links, y=mat-reg]{\runsfour};
+    \legend{,,,,(120),(240),(480),(960)}
+  \end{axis}
+\end{tikzpicture}

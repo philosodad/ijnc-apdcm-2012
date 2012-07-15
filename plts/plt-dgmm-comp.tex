@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+  \begin{axis}[xlabel=Average Degree, ylabel=Total Weight, legend style={at={(.95,.69)}, label={[font=\footnotesize]left:K/Y}, font=\footnotesize, anchor=south east}, legend columns=2, cycle list name={four-1-0}]
+    \addplot+[grt] table  [x=links, y=star-reg]{\averageone};
+    \addplot+[grt] table  [x=links, y=star-reg]{\averagetwo};
+    \addplot+[grt] table  [x=links, y=star-reg]{\averagethree};
+    \addplot+[grt] table  [x=links, y=star-reg]{\averagefour};
+    \addplot+[inv] table [x=links, y=mat-reg]{\averageone};
+    \addplot+[inv] table [x=links, y=mat-reg]{\averagetwo};
+    \addplot+[inv] table [x=links, y=mat-reg]{\averagethree};
+    \addplot+[inv] table [x=links, y=mat-reg]{\averagefour};
+    \legend{(120),(240),(480),(960)}
+  \end{axis}
+  \begin{axis}[axis x line=none,axis y line=none, legend style={at={(.95,.68)}, label={[font=\footnotesize]left:DGMM}, font=\footnotesize, anchor=north east}, legend columns=2, cycle list name={four-0-1}]
+    \addplot+[inv] table  [x=links, y=star-reg]{\averageone};
+    \addplot+[inv] table  [x=links, y=star-reg]{\averagetwo};
+    \addplot+[inv] table  [x=links, y=star-reg]{\averagethree};
+    \addplot+[inv] table  [x=links, y=star-reg]{\averagefour};
+    \addplot+[bls] table [x=links, y=mat-reg]{\averageone};
+    \addplot+[bls] table [x=links, y=mat-reg]{\averagetwo};
+    \addplot+[bls] table [x=links, y=mat-reg]{\averagethree};
+    \addplot+[bls] table [x=links, y=mat-reg]{\averagefour};
+    \legend{,,,,(120),(240),(480),(960)}
+  \end{axis}
+\end{tikzpicture}
+

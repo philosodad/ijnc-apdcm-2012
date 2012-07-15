@@ -20,7 +20,7 @@ With high probability, $\delta$ decreases by a constant fraction in each round.
 
 We begin with a node, $w$, which is an active node in the graph. We want to show that the probability that $w$ will join the cover is constant. Let us assume that $w$ chooses to be a receiver, an event which happens with $P(0.5)$
 
-We know that $w$ has some number of active neighbors, indicated by $\alpha(w)$. Each neighbor of $w$ also has some number of active neighbors. Each active degree is an integer between 1 and $\delta$. Following Assumption~\ref{assm:distribution}, we can consider each node to have approximately the same active degree, which we indicate by $\alpha$. 
+We know that $w$ has some number of active neighbors, indicated by $\alpha(w)$. Each neighbor of $w$ also has some number of active neighbors. Each active degree is an integer between 1 and $\delta$. We can consider each node to have approximately the same active degree, which we indicate by $\alpha$. 
 
 Each active neighbor of $w$ also chooses to be a sender or a receiver with equal probability. Following the assumption of equal distribution, there are $\sfrac{\alpha}{2}$ senders in the neighborhood of $w$, and each sender has $\alpha$ neighbors.
 
@@ -28,20 +28,15 @@ Each neighbor of $w$ that chooses to be a sender will, according to Line~\ref{al
 
 Therefore, the probability that $w$ will recieve an invitation from an active neighbor is: \input{eqns/eqn-bootstrap}
 
-If $w$ recieves at least one invitation, it will respond to exactly one invitation (\algref{alg:dgmm}{alglin:dgmm-choose-invite}), so the probability that $w$ will respond to an invitation from some active neighbor $v$ is exactly the same as the probability that $w$ will recieve an invitation from some active neighbor $v$. Therefore, if $w$ is a receiver, $w$ joins the cover with a probability of $1 - \sfrac{1}{\sqrt{{\mathrm{e}}}}$, which is constant. The probability of $w$ being a receiver at all is $\sfrac{1}{2}$, which is also constant, so the probability of $w$ joining the cover, for any node $w$ which is active in the graph, is constant in every round, which is what we wanted to show. 
+If $w$ recieves at least one invitation, it will respond to exactly one invitation (\algref{alg:dgmm}{alglin:dgmm-choose-invite}), so the probability that $w$ will respond to an invitation from some active neighbor $v$ is exactly the same as the probability that $w$ will recieve an invitation from some active neighbor $v$. Therefore, if $w$ is a receiver, $w$ joins the cover with a probability of $1 - \sfrac{1}{\sqrt{{\mathrm{e}}}}$, which is constant. The probability of $w$ being a receiver at all is $\sfrac{1}{2}$, and the probability of $w$ joining the cover is also $\sfrac{1}{2}$, as we assume that weights are distributed arbitrarily through the graph. Therefore, the probability that $w$ will join the cover in any given round is constant.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:dgmm-log-alpha}]
 
 We consider a node $u$, where $\alpha(u) = \delta$. $u$ may choose to be a sender or a receiver in this round, and $u$ may or may not join the matching. We do make the assumption that $u$ does not join the cover in this round.
 
-We add a notation, $\cR_u$ and $\cS_u$, which indicates the neighbors of $u$ that are either recievers or senders, respectively.
+$u$ has $\delta$ active neighbors. According to Proposition~\ref{prop:dgmm-log-each}, each of these neighbors joins the cover with constant probability. So in round one, we expect some constant percentage $p$ of the neighbors of $u$ to join the cover, and some constant percentage $q = 1-p$ of the neighbors of $u$ to remain active. Therefore, the value of $\delta(n+1)$ (where $n+1$ represents a round number) is $\delta(n) \times q$. Therefore $\alpha$ decreases at a constant rate, which is what we wanted to show.
 
-$u$ has $\delta$ active neighbors. Of these neighbors, approximately $\sfrac{\delta}{2}$ will become recievers in this round. Call this group $\cR_u$. Each neighbor of $u$ that is a recieiver will recieve an invitation with probability $\sfrac{1}{2}$.
-
-Therefore, $\sfrac{\delta}{4}$ of the neighbors of $w$ will both be recievers and recieve an invitation. Each of these joins the cover with a probability of $\sfrac{1}{2}$. Therefore, we can calculate from the magnitude of $\cR_u$ and the behavior of each node $v \in \cR_u$ that in this round, $\sfrac{\delta}{4}\times \sfrac{1}{2}$ of the neighbors of $w$ are expected to join the cover and cover an edge of $w$. This implies that if $\alpha(w) = \delta$ at the beginning of a round, $\alpha(w) = \delta-\sfrac{\delta}{8} = \sfrac{7}{8}$ at the end of the round.
-
-This decrease will apply to all nodes in the network if degrees and weights are distributed randomly through the graph. Therefore, $\delta$ will decrease by at least $\sfrac{1}{8}$ in each communication round. 
 \end{proof}
 
 \begin{cor}WHP, the number of communication rounds required to resolve Algorithm~\ref{alg:dgmm} for a random graph is $O(\log\Delta)$.\end{cor}
