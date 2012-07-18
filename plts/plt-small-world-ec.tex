@@ -1,0 +1,15 @@
+\begin{figure}[htp]
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[xlabel=Average $\Delta$, ylabel=Rounds, legend style={at={(1,0.25)}, anchor=east}]
+    \addplot table [x=delta, y=rounds]{\smlwldone};
+    \addplot table [x=delta, y=rounds]{\smlwldtwo};
+    \addplot table [x=delta, y=rounds]{\smlwldthree};
+    \legend{16 Nodes, 64 Nodes, 256 Nodes};
+  \end{axis}
+\end{tikzpicture}
+\caption{Edge Coloring of Small World Graphs}
+\label{plt:small-world-ec}
+\end{center}
+\end{figure}
+

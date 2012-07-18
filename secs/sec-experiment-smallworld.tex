@@ -1,0 +1,7 @@
+300 small world graphs were generated, 100 each with 16, 64, and 256 nodes, 50 sparse and 50 dense graphs per set. Algorithm~\ref{alg:edge-color} was used to generate an edge coloring for each graph.
+
+Consistent with Theorem~\ref{thm:edge-color}, the number of rounds required to find a coloring increased linearly with $\Delta$ and was not affected by the number of nodes in the graph. Further, the number of colors required to color the graph was less than $2\Delta -1$ in all cases. Figure~\ref{plt:small-world-ec} shows the relationship between $\Delta$, the number of rounds, and the number of nodes.
+
+\input{plts/plt-small-world-ec.tex}
+
+Conjecture~\ref{lem:edge-color-optimal} was not supported for this set of graphs. In particular, dense graphs with more nodes tended to use more than $\Delta + 1$ colors in most runs. The most colors used in any run was $\Delta + 5$ for a dense graph with 256 nodes. The average $\Delta$ for this group was 44.4. Further analysis of these results is required. 

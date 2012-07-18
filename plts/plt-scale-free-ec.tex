@@ -1,0 +1,14 @@
+\begin{figure}[htp]
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[xlabel=Average $\Delta$, ylabel=Rounds, legend style={at={(1,0.25)}, anchor=east}]
+    \addplot table [x=delta, y=rounds]{\sclfreeone};
+    \addplot table [x=delta, y=rounds]{\sclfreetwo};
+    \legend{100 Nodes, 400 Nodes};
+  \end{axis}
+\end{tikzpicture}
+\caption{Edge Coloring of Scale-Free Graphs}
+\label{plt:scale-free-ec}
+\end{center}
+\end{figure}
+
