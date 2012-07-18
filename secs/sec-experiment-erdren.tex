@@ -1,0 +1,7 @@
+Erdos-Renyi graphs were generated using the iGraph ruby bindings \cite{Gutteridge:2007fk}. Graphs were generated with 200 or 400 nodes, and an average degree of either 4, 8, or 16. 50 graphs were generated for each size.
+
+Consistent with Conjecture~\ref{lem:edge-color-optimal}, $\Delta + 2$ colors were used in only 2 of the 300 runs, and in no run was the number of colors in excess of $\Delta+2$. In the typical run, our algorithm found a coloring with either $\Delta$ or $\Delta + 1$ colors. 
+
+In keeping with our hypothesis, the number of rounds required to terminate the algorithm increased linearly with $\Delta$, and was not affected by the number of nodes in the network. Figure~\ref{plt:erdren-edge} shows this relationship.
+
+\input{plts/plt-erdren-edge-color.tex}

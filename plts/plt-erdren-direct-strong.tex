@@ -1,0 +1,14 @@
+\begin{figure}[htp]
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[xlabel=Average $\Delta$, ylabel=Rounds, legend style={at={(1,0.25)}, anchor=east}]
+    \addplot table [x=delta, y=rounds]{\erddirone};
+    \addplot table [x=delta, y=rounds]{\erddirtwo};
+    \legend{200 Nodes, 400 Nodes};
+  \end{axis}
+\end{tikzpicture}
+\caption{Strong Edge Coloring of Directed Erdos-Renyi Graph}
+\label{plt:erdren-direct-strong}
+\end{center}
+\end{figure}
+

@@ -1,0 +1,4 @@
+nodes	delta	rounds	fails	deltafails	worstdeltafail	
+200	16.0	43.225	0	1	2	
+200	27.0	71.35	0	0	1	
+200	46.0	126.5	0	0	1	

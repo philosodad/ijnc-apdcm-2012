@@ -1,0 +1,68 @@
+\begin{algorithm}
+\caption{Distributed Matching Based Edge Coloring for Directed Graphs (DiMaED)}
+\begin{algorithmic}[1]
+%\Require {$G(V,E)$: a Communicaton Network}
+\ForAll {$v_u \in V$ in parrallel}
+\Repeat
+\State {state $ \gets $ nextstate} 
+\State {color = color+1}
+\State {messages = []}
+\Case {$state$}
+\When {\cCd}
+\State {reset variables}
+\State {$nextstate \gets \{\cL \lor \cI\}$ } 
+\When {\cId}
+\State {{\sc BroadcastInvitations}}
+\State{$nextstate \gets \cW$}
+\When {\cLd}
+\State {Receive and store messages}
+\State {$nextstate \gets \cR$}  
+\When {\cRd}
+\State {{\sc ReturnInvitations}}
+\State {$nextstate \gets \cU_i$} 
+\When {\cWd}
+\State {Recieve and store messages}
+\State{$nextstate \gets \cU_o$} 
+\When {$\cU_i, \cU_o$}
+\State {{\sc UpdateEdges}}
+\State{$nextstate \gets \cC$} 
+\EndCase
+\Until {$\forall v \text{ incident to } u, e(u,v) \text{ is colored}$}
+\EndFor
+\end{algorithmic}
+\label{alg:dimaed}
+\end{algorithm}
+
+\begin{subalgorithms}
+\begin{algorithm}
+\caption{BroadcastInvitations}
+\begin{algorithmic}[1]
+\ForAll {$v \text{ incident to } u$}
+\State {{\sc Send} message($u$, $v$) to $v$} 
+\EndFor
+\end{algorithmic}
+\label{alg:dimaed-broadcast}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{ReturnInvitations}
+\begin{algorithmic}[1]
+\For  {$m$ in messages collected}
+\State {{\sc Send} message($m$) to sender of $m$}
+\EndFor
+\end{algorithmic}
+\label{alg:ma2ed-ei}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{UpdateEdges}
+\begin{algorithmic}[1]
+\For  {$m$ in messages collected}
+\State {Mark edge $u,v$ with color} \Comment $u$ and $v$ being the arguments of the message.
+\EndFor
+\end{algorithmic}
+\label{alg:ma2ed-ue}
+\end{algorithm}
+
+\end{subalgorithms}
+

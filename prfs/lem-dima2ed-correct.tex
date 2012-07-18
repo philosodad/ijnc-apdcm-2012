@@ -1,0 +1,19 @@
+\begin{lem}
+\label{lem:ma2ed-color-correct}
+Algorithm~\ref{alg:ma2ed} produces a correct coloring.
+\end{lem}
+\begin{proof}[Proof of Lemma~\ref{lem:ma2ed-color-correct}]
+We proceed by direct contradiction. Suppose that Algorithm~\ref{alg:ma2ed} terminates, but the coloring is not correct. There are two cases where this can happen.
+\begin{paragraph}{Case 1} A node uses the same color twice.
+
+Recall that each node colors exactly one outgoing or incoming edge at a time. In order for a single node to use one color for two edges, that node would have to either issue or accept an invite to use a color that it is already using. Since each node checks its legal color list before it issues or accepts an invite, this could only happen if some node used a color but did not update its color list. This contradicts the steps of the algorithm, in particular line~\algref{alg:ma2ed}{alg:ma2ed-lin-update}.
+\end{paragraph}
+\begin{paragraph}{Case 2} $\exists\ u,v,w,x \in V, (u,v), (v,w), (w,x) \in E \suchthat (u,v) \text{ is using color } \phi \text{ and } (w,x)\text{ is using color } \phi$.
+
+For $(uv)$ and $(wx)$ to be colored simultaneously, node $v$ would have to accept the invitation from node $u$. However, our graph is bidirectional, the existence of $(vw)$ implies the existence of $(wv)$. Therefore, in the round that $v$ accepts the invitation from $u$, it would also collect the invitation from $w$ to $x$. Since $v$ will not accept an invitation if it detects a conflict, $v$ will not accept the invitation from $u$ and the edges cannot be colored simultaneously.
+
+For $(uv)$ and $(wx)$ to be colored in two different rounds, either $v$ must accept the invitation from $u$ after $(wx)$ is colored or $w$ must send an invitation to $x$ after $(uv)$ has been colored. Either case assumes that $v$ or $w$ did not update their legal color lists at the end of some previous round. This contradicts the steps of the algorithm.
+\end{paragraph}
+If this is true, Lemma~\ref{lem:ma2ed-color-correct} is correct.
+\end{proof}
+

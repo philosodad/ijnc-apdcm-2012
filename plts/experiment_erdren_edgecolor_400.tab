@@ -1,0 +1,4 @@
+nodes	delta	rounds	fails	deltafails	worstdeltafail	
+400	17.0	45.075	0	0	1	
+400	29.0	75.175	0	0	1	
+400	48.0	127.775	0	1	2	

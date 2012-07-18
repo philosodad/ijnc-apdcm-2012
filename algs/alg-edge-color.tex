@@ -1,0 +1,58 @@
+\begin{algorithm}
+\caption{Distributed Matching Based Edge-Coloring Algorithm}
+\begin{algorithmic}[1]
+%\Require {$G(V,E)$: a Communicaton Network}
+\ForAll {$v_u \in V$ in parrallel}
+\State {$live_u \gets C$} \Comment All colors are available \label{alglin:ec-init-color}
+\State {$dead_u \gets \{\}$} \Comment No colors are used \label{alglin:ec-init-dict}
+\State {$used_u \gets [\,]$} \Comment No colors are assigned
+\State state $\leftarrow$ \cCd
+\Repeat
+\If {state = \cCd}
+\State {State $\gets (\cI \lor \cL)$} \Comment Coin toss selects state
+
+\ElsIf {state = \cId}
+\State {Randomly select an uncolored edge, $e_{u,v}$}\label{alglin:ec-issue-invite}
+\State {$c \gets (live_u \smallsetminus used_v[1]$} \Comment assign first available color to $c$ \label{alglin:ec-select-color}
+\State {Broadcast $I_u^v,c$} \Comment $u$ Invites $v$ to color $e_{u,v} \text{ with } c$ 
+\State {state $\leftarrow$ \cWd}
+
+\ElsIf {state = \cLd}
+\State {Recieve $I_x^y,c$} \Comment all local invites
+\If {$y = u$} \Comment invite is targeted to $v_u$
+\State {store $I_x^y,c$}
+\EndIf
+\State {State $\gets \cR$}
+
+\ElsIf {state = \cRd}
+\State {Randomly Select $I_v^u,c$} \Comment from stored invites \label{alglin:ec-choose-invite}
+\State {Broadcast $R_u^v,c $} \Comment $u$ accepts $v's$ invitation
+\State {Assign $c \mapsto e_{u,v}$} 
+\State {$used_u \hookleftarrow c$} \Comment Append c to assigned colors \label{alglin:ec-assign1}
+\State {state $\gets \cU$}
+
+\ElsIf {state = \cWd}\label{alglin:ec-receive-responses}
+\State {Recieve $R_x^y,c$} \Comment all local responses
+\If {$y = u$} \Comment response is to $v_u$ 
+\State {Assign $c \mapsto e_{u,v}$} 
+\State {$used \hookleftarrow c$} 
+\EndIf
+\State {state $\gets \cU$}
+
+\ElsIf {state = \cUd}
+\State {Broadcast $used_u$} \Comment Broadcast all assigned edge colors
+\State {Recieve $used_v$} \Comment Receive neighbors assigned colors
+\State {$dead_u \hookleftarrow used_v$}  \Comment the "dead" set contains the used colors from each neighbor, and is used when choosing colors in the invitation step \label{alglin:ec-assign2}
+\State {state $\gets \cE$}
+
+\ElsIf {State = \cEd}
+\State {Subtract $used_u$ from $live_u$} \Comment update usable colors \label{alglin:ec-update-colors}
+\State {state $\gets \cC$}
+
+\EndIf
+\Until {All edges are assigned a color}\label{alglin:ec-end-while}
+\EndFor
+\end{algorithmic}
+\label{alg:edge-color}
+\end{algorithm}
+

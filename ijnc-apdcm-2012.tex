@@ -120,17 +120,34 @@ Despite its overall simplicity, Algorithm~\ref{alg:dgmm} has a running time of $
 
 In this section we'll present the approach for edge coloring.
 
-\subsection{Distance-1 Algorithm}
+\subsection{Distance 1 Algorithm}
+\subsubsection{Description}
+\input{algs/alg-edge-color}
+\input{secs/sec-dimaed-description}
+\subsubsection{Analysis}
+We here address the termination, correctness, and solution quality of Algorithm~\ref{alg:edge-color}. We will first show that Algorithm~\ref{alg:edge-color} is likely to terminate in $O(\Delta)$ rounds, then that it will produce a correct coloring if it does terminate, and finally that the coloring produced will use no more than $2\Delta - 1$ colors.
+\input{prfs/pro-edge-color.tex}
+\input{prfs/lem-edge-color-optimal.tex}
 
-\subsection{Modified Distance-1 Algorithm}
+\subsubsection{Experimental Results}
 
+In our experimental results, we found that graph structure was a crucial component in determining the quality of solution that we found in any of our algorithms.
 
-\section{Experimental Results}
-
-
+\subsubsection{Algorithm~\ref{alg:edge-color} on Erd\"{o}s-R\'{e}nyi Graphs}
+\input{secs/sec-experiment-erdren}
 \subsection{Distance 2 Algorithm}
-\subsection{Experimental Results}
+\subsubsection{Description}
+\label{sub:dima2ed-description}
 
+\input{secs/sec-dima2ed-description}
+\input{algs/alg-dima2ed}
+\subsubsection{Analysis}
+We here address the termination and correctness of Algorithm~\ref{alg:ma2ed}.
+\input{prfs/prf-dima2ed.tex}
+
+\subsection{Experimental Results}
+\label{sub:experiment-erdren-direct}
+\input{secs/sec-experiment-erdren-direct}
 \section{Expansion to other problems and problems that cannot be solved in covering/covering}
 
 \bibliographystyle{plain}

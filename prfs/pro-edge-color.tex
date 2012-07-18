@@ -1,0 +1,14 @@
+\begin{thm}
+Algorithm~\ref{alg:edge-color} will produce a 2-approximate coloring in $O(\Delta)$ rounds in the typical case.
+\label{thm:edge-color}
+\end{thm}
+\begin{proof}
+We first show that Algorith~\ref{alg:edge-color} terminates in $O(\Delta)$ rounds.
+
+\input{prfs/lemma-edge-color-terminate.tex}
+We will now show that the coloring produced by Algorithm~\ref{alg:edge-color} is guaranteed to be correct.
+\input{prfs/lemma-edge-color-correct.tex}
+We now show that the coloring produced by Algorithm~\ref{alg:edge-color} can be no worse than $2\Delta - 1$ in the worst case.
+\input{prfs/lemma-edge-color-approximate.tex}
+Therefore, Theorem~\ref{thm:edge-color} is correct.
+\end{proof}

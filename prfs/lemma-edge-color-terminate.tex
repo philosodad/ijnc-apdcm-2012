@@ -1,0 +1,22 @@
+\begin{lem}
+\label{lem:edge-color-terminate}
+Algorithm~\ref{alg:edge-color} is likely to terminate in $O(\Delta)$ rounds.
+\end{lem}
+
+\begin{proof}[Proof of Lemma~\ref{lem:edge-color-terminate}]
+
+Algorithm~\ref{alg:edge-color} terminates when all of the nodes have colored all of their edges. In order to color an edge, a node must form a pair in an a given round with each of its neighbors. The number of neighbors of each node is $\delta \le \Delta$.
+
+We note that there is no limit on the number of nodes that can participate in any given round. If a particular graph has a complete matching, than every compute node may participate in a round. Further, the fact that a node is participating guarantees that at least one of its neighbors is participating, but does not prevent any of its other neighbors from participating as well.
+
+Therefore, if the probability that a given node $w$ will participate in the computation for a given round can be shown to be constant, than the number of compute rounds is bounded by that constant times $\Delta$.
+
+We therefore will procede to find the probability that a random node $w$ will color one of its edges in some round $r$.
+
+Following the same reasoning as the proof of Lemma~\ref{lem:dgmm-log}, we know that in any given round, a which is a receiver will receive an invitation with a constant probability, as shown in Equation~\ref{eqn:bootstrap}. Nodes choose to be a receiver with constant probability, and any node which is a receiver and receives at least one invitation will respond to one invitation.
+
+Therefore the probability that a node will be in the matching in a given round is constant.
+
+A node in the matching will color at least one edge, and no node has more than $\Delta$ edges, so Algorithm~\ref{alg:edge-color} will terminate in $O(\Delta)$ rounds.
+
+\end{proof}

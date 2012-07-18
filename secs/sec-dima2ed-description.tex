@@ -1,0 +1,22 @@
+Algorithm~\ref{alg:ma2ed} (DiMa2Ed) proceeds in a manner similar to Algorithm~\ref{alg:edge-color}, adding the additional \cEd\ step to Fig~\ref{fig:automata} and adding subroutines at different steps. All compute nodes proceed synchronously. We describe the behavior of each node in each state.
+
+\paragraph{\cCd\ (Choose State)}
+Each active node (nodes that have not yet assigned colors to each edge) begin each round in the \cCd\ state. In this state, the nodes choose, with equal probability, to transition to the \cId\ or \cLd\ states for the next communication step.
+
+\paragraph{\cId\ (Invitor) State}
+If node $v$ is in the \cId\ state it executes Procedure~\ref{alg:ma2ed-crp}, choosing a potential round partner. Round partners are chosen at random from among the uncolored edges $v,u$ of $v$, $v$ chooses a random $u$ and broadcasts $u$ a message containing the id of $v$, the id of $u$, and a proposed color. $v$ then transitions to the \cWd\ state.
+
+\paragraph{\cLd\ (Listen) State}
+If a node $v$ is in the \cLd\ state it collects all messages from its neighbors and transitions to the \cRd\ state. 
+
+\paragraph{\cRd\ (Respond) State}
+A node $v$ in the \cRd\ State must evaluate all of its invites to look for one that it can respond to. First, invites can be divided into two categories, those which contain the id of $v$ and those which do not. Call the former group group $a$ and the latter group group $b$. $v$ searches group $a$ for a message which proposes a useable color that is not in any proposal from group $b$. $v$ chooses a single message that meets that qualification and rebroadcasts it. $v$ deletes all other messages from memory and transitions to \cUd.
+
+\paragraph{\cWd\ (Wait) State}
+In the \cWd\ state, a node checks all messages from its neighbors looking for the message that it sent in the \cId\ state. If it finds such a message, it keeps it, otherwise, it deletes all messages from memory, and transitions to the \cUd\ state.
+
+\paragraph{\cUd\ (Update) State}
+Nodes in the update state either retain 1 or 0 messages in memory. If they contain a message in memory, they color the edge described in the message with the color contained in the message, then eliminate that color from their list of usable colors. Nodes then transition to the \cEd\ state.
+
+\paragraph{\cEd\ (Exchange) State}
+Every node exchanges the changes to their color lists with their neighbors and updates their own color lists based on what their neighbors have communicated. Nodes which have uncolored edges now transition back to the \cCd state.

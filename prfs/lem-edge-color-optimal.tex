@@ -1,0 +1,19 @@
+\begin{con}
+\label{lem:edge-color-optimal}
+Algorithm~\ref{alg:edge-color} uses $C \le \Delta + 1$ colors in the typical run. 
+\end{con}
+
+\begin{proof}[Discussion of Conjecture~\ref{lem:edge-color-optimal}]
+
+A graph can certainly be colored with either $\Delta$ or $\Delta + 1$ colors. If a node $v$ were to be forced to use $\Delta + 2$ colors to color a graph, that would mean that there are two colors of index $\le \Delta$ which are being used by each neighbor of $v$ but not by $v$ itself.
+
+In order for this to happen, there would need to be some round, or sequentially set of rounds, in which all of $v$'s neighbors formed a matching, and $v$ did not. We know from Proposition~\ref{lem:edge-color-terminate} that the odds of a node forming a match in a given round are greater than $\sfrac{1}{4}$, because the odds of a node being an invitor and recieving an invitation are approximately $\sfrac{1}{4}$. We can also easily calculate that the odds of a node being an invitor and sending a successful invitation are no greater than $\sfrac{1}{4}$, since there is a $\sfrac{1}{2}$ chance that a node $w$ will choose to send invitations and a $\sfrac{1}{2}$ chance that the neighbor $w$ sends an invitation to is an invitee.  
+
+So the odds of a node forming a pair at all in a given round are $\sfrac{1}{x}$, $4 \ge x \ge 2$. 
+
+For a given node to not form a pair while all of its neighbors do form pairs is therefore akin to the odds that in a fair coin toss, we first flip heads and then flip tails some arbitrary number of times in a row, or that in a simultaneous coin toss of some number of coins, one is heads while the rest are tails. 
+
+We therefore expect our algorithm to behave well in the following sense: we should get conistent results with similar graphs, the algorithm should color with $\Delta$ or $\Delta + 1$ colors most of the time, and in no experimental case should we ever see the maximum $2\Delta - 1$ colors used.
+
+\end{proof}
+

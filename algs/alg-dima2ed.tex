@@ -1,0 +1,100 @@
+\begin{algorithm}
+\caption{Distributed Matching Based Distance 2 Edge Coloring for Directed Graphs (DiMa2ED)}
+\begin{algorithmic}[1]
+%\Require {$G(V,E)$: a Communicaton Network}
+\ForAll {$v_u \in V$ in parrallel}
+\Repeat
+\State {state $ \gets $ nextstate} 
+\Case {$state$}
+\When {\cCd}
+\State {reset variables}
+\State {$nextstate \gets \{\cL \lor \cI\}$ } 
+\When {\cId}
+\State {{\sc ChooseRoundPartner}}
+\State{$nextstate \gets \cW$}
+\When {\cLd}
+\State {Recieve and store messages}
+\State {$nextstate \gets \cR$}  
+\When {\cRd}
+\State {{\sc EvaluateInvites}}
+\State {$nextstate \gets \cU_i$} 
+\When {\cWd}
+\State {Recieve and store messages}
+\State{$nextstate \gets \cU_o$} 
+\When {$\cU_i, \cU_o$}
+\State {{\sc UpdateEdges}}
+\State{$nextstate \gets \cE$} 
+\When {\cEd}
+\State {{\sc UpdateColors}} \label{alg:ma2ed-lin-update}
+\State{$nextstate \gets \cC$} 
+\EndCase
+\State {{\sc Send} $nextmessage$} \label{alg:ma2ed-lin-send}
+\Until {$\forall v \text{ incident to } u, e(u,v) \text{ is colored}$}
+\EndFor
+\end{algorithmic}
+\label{alg:ma2ed}
+\end{algorithm}
+
+\begin{subalgorithms}
+\begin{algorithm}
+\caption{ChooseRoundPartner}
+\begin{algorithmic}[1]
+\State {choose a random uncolored edge $e(u,v)$}
+\State {$roundpartner \gets v$}
+\State {Choose an open channel $\phi$ for $v$}
+\State {$nextmessage \gets$ {$\phi, v, u$}}
+\end{algorithmic}
+\label{alg:ma2ed-crp}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{EvaluateInvites}
+\begin{algorithmic}[1]
+\For  {$m$ in messages collected}
+\If {$m$ includes $u$}
+\State {$mine[] \gets message$} \Comment Create an array of messages sent to $u$
+\Else 
+\State {$other[] \gets message$} \Comment Create an array of messages not sent to $u$
+\EndIf
+\EndFor
+\State {$mine[] \gets mine[] \suchthat \phi \notin other$} \Comment Look for color collisions between $mine$ and $other$
+\State {Select a message $m$ from $mine$}
+\State {$nextmessage \gets {\phi, u, v} \suchthat m\text{ contains } {\phi, v, u}$} \Comment reply to the chosen message
+\end{algorithmic}
+\label{alg:ma2ed-ei}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{UpdateEdges}
+\begin{algorithmic}[1]
+\State {select a message $m \suchthat m \text { contains } roundparter$} \Comment find the reply--if any--to the last invite sent
+\If {$m$}
+\Case {$state$}
+\When {$\cU_i$}
+\State {color edge $e(roundpartner, u) \text { with } \phi \text{ from } m$} \Comment color the incoming edge from the round partner
+\When {$\cU_o$}
+\State {color edge $e(u, roundpartner) \text { with } \phi \text{ from } m$} \Comment color the outgoing edge to the round partner
+\EndCase
+\EndIf
+\State {$nextmessage \gets {edges, u}$}
+\end{algorithmic}
+\label{alg:ma2ed-ue}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{UpdateColors}
+\begin{algorithmic}[1]
+\State {$colorlist \gets colorlist - newcolors$} \Comment update current color list
+\For{$m$ in messages collection}
+\For{$incolor$, $outcolor$ in $m$}
+\State {$newin[].push(in_color)$}
+\State {$newout[].push(out_color)$}
+\EndFor
+\EndFor
+\State {$legalin \gets legalin - newin$} \Comment remove neighbors new in colors from legal in colors
+\State {$legalout \gets legalout - newout$} \Comment remove neighbors new out colors from legal out colors
+\State $nextmessage \gets {v, nil, newout}$
+\end{algorithmic}
+\label{alg:ma2ed-uc}
+\end{algorithm}
+\end{subalgorithms}

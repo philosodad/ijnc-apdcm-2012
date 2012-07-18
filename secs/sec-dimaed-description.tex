@@ -1,0 +1,27 @@
+In Figure~\ref{fig:automata}, the states of the vertexes are labeled \cCd, \cId, \cLd, \cWd, \cRd, \cUd, and \cDd. In our adaptation of the automata, shown in Algorithm~\ref{alg:edge-color}, an additional state, \cEd, is used for the purposes of exchanging information at the end of each round.
+
+Each node maintains a list of colors that each of its neighbors has used. This is updated at the end of each round.
+
+All transitions are made synchronously, that is, we assume that if any node in the network is in a given state, all nodes in the network are either in that state or in a corresponding state. States that correspond are {\cCd, \cDd}, {\cId, \cLd}, {\cRd, \cWd}.
+
+\paragraph{\cCd\ (Choose) state}
+Each vertex chooses with equal probability to transition to the \cId\ state or the \cLd\ state. 
+
+\paragraph{\cId\ (Invite) State} 
+Each node in the \cId\ state chooses an available edge and available color. The edge is chosen randomly from among the nodes uncolored edges, and the color is the lowest indexed color available to color that edge (Algorithm~\ref{alg:edge-color}, lines~\algref{alg:edge-color}{alglin:ec-select-color},\algref{alg:edge-color}{alglin:ec-assign2}). The node then sends a message containing its own id, the id of the intended receiver, and the proposed color. 
+
+\paragraph{\cLd\ (Listen) State} 
+Each Node in the \cLd\ state listens for invitations from its neighbors. From among the invitations received, the node will keep invitations containing its own id and transition to the \cRd\ state.
+
+\paragraph{\cRd\ (Respond) State}
+Each node in the \cRd\ state chooses a random invitation from the invitations recieved and kept in the \cLd\ state. The node sends a reply message containing its own id, the id of the original sender, and the proposed color from the invitation. This response message is a duplicate of the invitation message with the ids reversed. The node then transitions to the \cUd\ state. Nodes that recieved no invitations simply transition to the \cUd\ state.
+
+\paragraph{\cWd\ (Wait) State}
+Nodes in the \cWd\ state collect all replies in their neighborhood and transition to the \cUd\ state.
+
+\paragraph{\cUd\ (Update) State}
+Nodes in the \cUd\ state update their own edges if they have received a response to an invitation or responded to an invitation. All nodes next transition to the \cEd\ state. 
+
+\paragraph{\cEd\ (Exchange) State}
+In this state, nodes that have used new colors broadcast those colors to their neighbors. All nodes use this information to update the colors that they have available to exchange with their neighbors. Nodes which have colored all of their edges transfer to the \cDd\ (Done) State, and all other nodes transition back to \cCd.
+
