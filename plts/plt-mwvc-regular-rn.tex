@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+  \begin{axis}[xlabel=Number of Nodes, ylabel=Communication Rounds, legend style={at={(0.95,0.20)}, font=\footnotesize, label={[font=\footnotesize]left:Degree}, anchor=north east}, legend columns=2, cycle list name={four-1-0}]
+    \addplot+[grt] table [x=nodes, y=mat]{\regularone};
+    \addplot+[grt] table [x=nodes, y=mat]{\regulartwo};
+    \addplot+[grt] table [x=nodes, y=mat]{\regularthree};
+    \addplot+[grt] table [x=nodes, y=mat]{\regularfour};
+    \legend{(16),(32),(64),(128)}
+  \end{axis}
+\end{tikzpicture}
