@@ -1,5 +1,4 @@
-
-\label{sec:framework}
+\label{sec:automata}
 Our framework relies on a simple handshake protocol, represented by the state machine in Figure~\ref{fig:automata}.
 
 Our approach is to have all of the compute nodes participate in forming a matching $V' \subset V$. The first three steps of the automata show our method for forming this matching. Having formed the matching, the nodes that are in $V'$ compute local solutions and broadcast them to all of their neighbors. This continues until every necessary local solution has been found. 

@@ -71,8 +71,9 @@ We present an automata for a compute node in a message passing model which allow
 
 \section{Introduction}
 
-In this paper we expand on our prior work in \cite{Daigle:2011uq, Daigle:2012uq} using a simple Matching Automata to find constant approximations for NP-complete problems on a message passing computer. We present both theoretical and experimental results. We improve on our prior work in two ways, first, we improve our proof for correctness and performance, second, we present expanded experimental results, and third, we present an improved algorithm for edge color.
+The Minimum Vertex Cover problem and its weighted variant are NP-Complete problems with several known linear time sequential algorithms that provide constant factor approximations. The existence of such algorithms suggests that it should be theoretically possible to discover a distributed or parallel algorithm to provide a constant factor approximation in constant time, however, it has been proven that no such algorithm exists\cite{1011811}. 
 
+Here we present a distributed algorithm that provides a 2-optimal solution to Minimum Weighted Vertex Cover in $O(\log\Delta)$ rounds with high probability, where $\Delta$ is the largest degree of the graph. This algorithm, based on maximal matchings, is the first distributed algorithm that we are aware of with a performance based on $\Delta$ rather than on the size of the graph. We extend our framework for this algorithm and show how it can be applied to the Minimum Edge Coloring problem and the Strong Directed Edge Coloring problem.\footnote{This work is an extension of our work in \cite{Daigle:2011uq, Daigle:2012uq}. The proofs have been substantially improved from our prior work and more experimental results are included.}
 
 \subsection{Definitions}
 
@@ -80,15 +81,7 @@ In this paper we expand on our prior work in \cite{Daigle:2011uq, Daigle:2012uq}
 \input{defs/def-mwvc}
 \input{defs/def-edge-color}
 \input{defs/def-strong-directed-edge-color}
-\subsection{The Model and Automata}
-
-\subsubsection{The Message Passing Model}
-\input{secs/sec-message-passing}
-\subsubsection{The Matching Automata}
-\input{secs/sec-automata}
-
 \subsection{Prior Work}
-
 \subsubsection{Vertex Cover}
 
 \input{secs/sec-prior-vertex}
@@ -97,15 +90,26 @@ In this paper we expand on our prior work in \cite{Daigle:2011uq, Daigle:2012uq}
 
 \input{secs/sec-prior-edge}
 
+\subsection{Organization of this Paper}
+
+Our primary practical result is a new distributed algorithm that reduces the communication complexity for finding a 2-optimal minimum weighted vertex cover from $O(\log n)$ to $O(\log \Delta)$. This algorithm uses a simple framework to convert the sequential algorithm presented in \cite{Gonzalez1995129} to the distributed case. We verify our findings theoretically and through experiment.
+
+Our model and framework are presented in Section~\ref{sec:framework}. In Section~\ref{sec:dgmm-description} we describe the sequential algorithm of Gonzalez and show how the framework is applied to produce the distributed algorithm. In Section~\ref{ssb:algorithms-dgmm-performance} we provide a detailed proof of its performance bounds. Our experimental setup and results are described in Section~\ref{sec:vertex-experiment}.
+
+Section~\ref{sec:edge-coloring-problems} covers the algorithms for edge coloring and strong directed edge coloring. Section~\ref{sec:dimaed-description} describes DiMaEd, our edge coloring algorithm. Section~\ref{sec:dimaed-correct} discusses the running time and correctness of DiMaEd. Our experimental results for the edge coloring problem are in Section~\ref{sec:dimaed-experiments}. Section~\ref{sec:dima2ed-description} introduces DiMa2ed, or algorithm for strong edge coloring. We discuss the running time and correctness of DiMa2ed in Section~\ref{sec:dima2ed-correct}. We present limited experimental results for DiMa2ed in Section~\ref{sub:experiment-erdren-direct}.
+
+\section{The Model and Automata}
+\label{sec:framework}
+\subsection{The Message Passing Model}
+\input{secs/sec-message-passing}
+\subsection{The Matching Automata}
+\input{secs/sec-automata}
+
 \section{The Vertex Cover Problem}
-
-In this section we'll present the findings for Vertex Cover.
-
 \subsection{Algorithm}
 \input{secs/sec-dgmm-description}
 \input{algs/alg-dgmm.tex}
 \subsection{Analysis}
-
 \label{ssb:algorithms-dgmm-performance}
 
 Despite its overall simplicity, Algorithm~\ref{alg:dgmm} has a running time of $O(\log \Delta)$, which improves on the previous best result of $O(\log n)$ in \cite{1582746} without sacrificing the performance bound of two-optimality. A formal proof of our performance claims follows.
@@ -117,50 +121,30 @@ Despite its overall simplicity, Algorithm~\ref{alg:dgmm} has a running time of $
 \input{secs/sec-vertex-experiment}
 
 \section{Edge Coloring Problem}
-
-In this section we'll present the approach for edge coloring.
-
+\label{sec:edge-coloring-problems}
 \subsection{Distance 1 Algorithm}
 \subsubsection{Description}
 \input{algs/alg-edge-color}
 \input{secs/sec-dimaed-description}
 \subsubsection{Analysis}
-We here address the termination, correctness, and solution quality of Algorithm~\ref{alg:edge-color}. We will first show that Algorithm~\ref{alg:edge-color} is likely to terminate in $O(\Delta)$ rounds, then that it will produce a correct coloring if it does terminate, and finally that the coloring produced will use no more than $2\Delta - 1$ colors.
-\input{prfs/pro-edge-color.tex}
-\input{prfs/lem-edge-color-optimal.tex}
-
+\input{secs/sec-dimaed-correct}
 \subsubsection{Experimental Results}
-
-In our experimental results, we found that graph structure was a crucial component in determining the quality of solution that we found in any of our algorithms.
-
-\subsubsection{Algorithm~\ref{alg:edge-color} on Erd\"{o}s-R\'{e}nyi Graphs}
-\input{secs/sec-experiment-erdren}
-
-\subsubsection{Algorithm~\ref{alg:edge-color} on Small World Graphs}
-\input{secs/sec-experiment-smallworld}
-
-\subsubsection{Algorithm~\ref{alg:edge-color} on Scale Free Graphs}
-\label{sub:experiment:scalefree}
-\input{secs/sec-experiment-scalefree}
-
+\input{secs/sec-dimaed-experiments}
 \subsection{Distance 2 Algorithm}
 \subsubsection{Description}
-\label{sub:dima2ed-description}
 
 \input{secs/sec-dima2ed-description}
 \input{algs/alg-dima2ed}
-\subsubsection{Analysis}
-We here address the termination and correctness of Algorithm~\ref{alg:ma2ed}.
-\input{prfs/prf-dima2ed.tex}
 
+\subsubsection{Analysis}
+\input{secs/sec-dima2ed-correct}
 \subsection{Experimental Results}
 \label{sub:experiment-erdren-direct}
 \input{secs/sec-experiment-erdren-direct}
-\section{Expansion to other problems and problems that cannot be solved in covering/covering}
-
+\section{Discusion}
+\input{secs/sec-discussion}
 \bibliographystyle{plain}
 \bibliography{ijnc-apdcm-2012}
-
 
 \end{document}
 
