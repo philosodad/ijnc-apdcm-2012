@@ -1,3 +1,11 @@
 In sequential algorithms, there are a number of techniques--such as divide and conquer, linear programming, dynamic programming--that can be generalized to tackle a large number of problems. Distributed algorithms have a shorter history and a shorter list of such general techniques. In this paper, we have presented a general framework that can be used to tackle problems that can be mapped to matchings on a graph. We have applied this framework to three separate problems in graph theory.
 
+While our framework can be easily applied to specific types of problems such as those shown, the precise nature of which problems will yield to this approach is not entirely clear. However, broadly, we can say that in order to apply the framework to a problem, the problem must have certain characteristics.
+\begin{enumerate}
+\item First, the problem, when modeled as a graph problem, must have a valuable answer that is represented by the state of the nodes, rather than aggregated information in any given node.
+\item Second, there must exist a sequential algorithm that operates on each edge in an arbitrary order. 
+\item Third, the algorithm must operate with strictly local information.
+\end{enumerate}
+Any problem that has such a representation allows for simultaneous calculation of the values in a matching, which makes it an appropriate candidate for the automata.
+
 Our application of the framework resulted in a new distributed algorithm for the Minimum Weighted Vertex Cover based on maximal matchings. The previous lower bound for this problem was $O(\log n)$ with high probability, we have shown that our algorithm improves this to $O(\log \Delta)$ for random graphs. 

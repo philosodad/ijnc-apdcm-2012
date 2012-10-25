@@ -1,0 +1,97 @@
+\begin{figure}[htp]
+  \begin{centering}
+  \begin{subfloat}[Edge Coloring: Influence of (0,2)]{
+  \label{subfig:edge-coloring}
+  \begin{tikzpicture}[shorten >=1pt,node distance=1cm,on grid,auto, bend angle=75, every state/.style={scale=1, minimum size=18pt, inner sep=2pt}, scale=0.8, every node/.style={transform shape}]
+    %\draw [help lines] (-1,4) grid (7,8);
+    \path [help lines] (-1,4) grid (7,8);
+    \input{figs/undirected.dat}
+    \path [draw, solid] (0) to (2);
+    \path [draw, dashed] (2) to (4);
+    \path [draw, dashed] (2) to (8);
+    \path [draw, dashed] (2) to (5);
+    \path [draw, dashed] (2) to (7);
+    \path [draw, dashed] (2) to (6);
+    \path [draw, dashed] (2) to (3);
+    \path [draw, dashed] (2) to (1);
+  \end{tikzpicture}}
+  \end{subfloat}
+  \begin{subfloat}[Strong Edge Coloring: Influence of (0,2)]{
+  \label{subfig:strong-edge-coloring}
+  \begin{tikzpicture}[shorten >=1pt,node distance=1cm,on grid,auto, bend angle=75, every state/.style={scale=1, minimum size=18pt, inner sep=2pt}, scale=0.8, every node/.style={transform shape}]
+    %\draw [help lines] (-1,4) grid (7,8);
+    \path [help lines] (-1,4) grid (7,8);
+    \input{figs/undirected.dat}
+    \path [draw, solid] (0) to (2);
+    \path [draw, dashed] (2) to (4);
+    \path [draw, dashed] (2) to (8);
+    \path [draw, dashed] (2) to (5);
+    \path [draw, dashed] (2) to (7);
+    \path [draw, dashed] (2) to (6);
+    \path [draw, dashed] (2) to (3);
+    \path [draw, dashed] (2) to (1);
+    \path [draw, dashed] (4) to (8);
+    \path [draw, dashed] (4) to (5);
+    \path [draw, dashed] (4) to (6);
+    \path [draw, dashed] (4) to (1);
+    \path [draw, dashed] (3) to (1);
+    \path [draw, dashed] (3) to (7);
+    \path [draw, dashed] (3) to (8);
+    \path [draw, dashed] (3) to (5);
+    \path [draw, dashed] (3) to (6);
+    \path [draw, dashed] (7) to (8);
+    \path [draw, dashed] (7) to (6);
+    \path [draw, dashed] (5) to (8);
+    \path [draw, dashed] (5) to (6);
+    \path [draw, dashed] (8) to (1);
+  \end{tikzpicture}}
+  \end{subfloat}
+  \\
+  \begin{subfloat}[Directed Edge Coloring: Influence of (4,7)]
+  {\label{subfig:directed-edge-coloring}
+  \begin{tikzpicture}[shorten >=1pt,node distance=1cm,on grid,auto, bend angle=75, every state/.style={scale=1, minimum size=18pt, inner sep=2pt}, scale=0.8, every node/.style={transform shape}]
+    %\draw [help lines] (-1,4) grid (7,8);
+    \path [help lines] (-1,4) grid (7,8);
+		\input{figs/directed.dat}
+    \path [dir, solid] (4) to (7);
+    \path [dir, dashed] (7) to (2);
+    \path [dir, dashed] (7) to (5);
+    \path [dir, dashed] (7) to (1);
+    \path [dir, dashed] (7) to (3);
+    \path [dir, dashed] (7) to (4);
+    \path [dir, dashed] (3) to (4);
+  \end{tikzpicture}}
+    \end{subfloat}
+  \begin{subfloat}[Strong Directed Edge Coloring: Influence of (4,7)]
+  {\label{subfig:strong-directed-edge-coloring}
+  \begin{tikzpicture}[shorten >=1pt,node distance=1cm,on grid,auto, bend angle=75, every state/.style={scale=1, minimum size=18pt, inner sep=2pt}, scale=0.8, every node/.style={transform shape}]
+    %\draw [help lines] (-1,4) grid (7,8);
+    \path [help lines] (-1,4) grid (7,8);
+		\input{figs/directed.dat}
+    \path [dir, solid] (4) to (7);
+    \path [dir, dashed] (7) to (2);
+    \path [dir, dashed] (7) to (5);
+    \path [dir, dashed] (7) to (1);
+    \path [dir, dashed] (7) to (3);
+    \path [dir, dashed] (7) to (4);
+    \path [dir, dashed] (4) to (3);
+    \path [dir, dashed] (5) to (7);
+    \path [dir, dashed] (1) to (7);
+    \path [dir, dashed] (2) to (7);
+    \path [dir, dashed] (3) to (7);
+    \path [dir, dashed] (3) to (1);
+    \path [dir, dashed] (3) to (4);
+    \path [dir, dashed] (3) to (6);
+    \path [dir, dashed] (2) to (8);
+    \path [dir, dashed] (2) to (6);
+    \path [dir, dashed] (1) to (8);
+    \path [dir, dashed] (1) to (3);
+    \path [dir, dashed] (6) to (3);
+  \end{tikzpicture}}
+    \end{subfloat}
+  \caption{Edge Colorings}
+  \label{fig:edge-colorings}
+  \end{centering}
+\end{figure}
+
+

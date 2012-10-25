@@ -3,7 +3,7 @@ In Figure~\ref{fig:automata}, the states of the vertexes are labeled \cCd, \cId,
 
 Each node maintains a list of colors that each of its neighbors has used. This is updated at the end of each round.
 
-All transitions are made synchronously, that is, we assume that if any node in the network is in a given state, all nodes in the network are either in that state or in a corresponding state. States that correspond are {\cCd, \cDd}, {\cId, \cLd}, {\cRd, \cWd}.
+All transitions are made synchronously, that is, we assume that if any node in the network is in a given state, all nodes in the network are either in that state or in a corresponding state. States that correspond are \{\cCd, \cDd\}, \{\cId, \cLd\}, \{\cRd, \cWd\}.
 
 \paragraph{\cCd\ (Choose) state}
 Each vertex chooses with equal probability to transition to the \cId\ state or the \cLd\ state. 
@@ -15,7 +15,7 @@ Each node in the \cId\ state chooses an available edge and available color. The 
 Each Node in the \cLd\ state listens for invitations from its neighbors. From among the invitations received, the node will keep invitations containing its own id and transition to the \cRd\ state.
 
 \paragraph{\cRd\ (Respond) State}
-Each node in the \cRd\ state chooses a random invitation from the invitations recieved and kept in the \cLd\ state. The node sends a reply message containing its own id, the id of the original sender, and the proposed color from the invitation. This response message is a duplicate of the invitation message with the ids reversed. The node then transitions to the \cUd\ state. Nodes that recieved no invitations simply transition to the \cUd\ state.
+Each node in the \cRd\ state chooses a random invitation from the invitations received and kept in the \cLd\ state. The node sends a reply message containing its own id, the id of the original sender, and the proposed color from the invitation. This response message is a duplicate of the invitation message with the ids reversed. The node then transitions to the \cUd\ state. Nodes that received no invitations simply transition to the \cUd\ state.
 
 \paragraph{\cWd\ (Wait) State}
 Nodes in the \cWd\ state collect all replies in their neighborhood and transition to the \cUd\ state.

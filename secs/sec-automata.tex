@@ -6,7 +6,7 @@ Our approach is to have all of the compute nodes participate in forming a matchi
 
 Each node begins a decision round in the \cCd, or {\em choose} state, and chooses randomly whether to transition to the \cId\ or \cLd\ state. Nodes in the \cId\ state choose a single neighbor with a shared subproblem (such as covering or coloring a shared edge) and issue an {\em invitation} to solve that subproblem in this round. 
 
-An invitation should contain all of the information that the invitee needs to compute the solution to the subproblem for this round. For example, if the problem being solved is edge coloring, a node would send it's own id, the id of the intended reciever, and a set of potential colors. Nodes in the \cLd\ state collect any invitations addressed to them. 
+An invitation should contain all of the information that the invitee needs to compute the solution to the subproblem for this round. For example, if the problem being solved is edge coloring, a node would send it's own id, the id of the intended receiver, and a set of potential colors. Nodes in the \cLd\ state collect any invitations addressed to them. 
 
 In the next step, each node that was in the \cLd\ state transitions to the \cRd\ state, chooses a single invitation from their collection and responds to that invitation. An invitation response is essentially a mirror of the original invitation, containing the id of the responding node, the id of the original sender, and an acceptable solution to the subproblem. 
 

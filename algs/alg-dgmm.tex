@@ -1,7 +1,7 @@
 \begin{algorithm}
 \caption{Distributed Maximal-Matching-based Minimum-Weighted Vertex Cover  Algorithm (DGMM)}
 \begin{algorithmic}[1]
-%\Require {$G(V,E)$: a Communicaton Network}
+%\Require {$G(V,E)$: a Communication Network}
 \ForAll {$v_u \in V$ in parrallel}
 \State $S_u \leftarrow False$ \Comment $u$ is not in the cover
 \State state $\leftarrow$ \cCd
@@ -14,7 +14,7 @@
 \State {State $\gets (\cI \lor \cL)$} \Comment Coin toss selects state
 \ElsIf {state = \cId}
 \State {Randomly select an unweighted edge, $e_{u,v}$}\label{alglin:dgmm-issue-invite}
-\State {Broadcast $I_u^v$} \Comment $u$ Invites $v$ to weight $e_{u,v}$ 
+\State {Broadcast $I_u^v\varpi(u)$} \Comment $u$ Invites $v$ to weight $e_{u,v}$ \label{alglin:dgmm-invite}
 \State {state $\leftarrow$ \cWd}
 \ElsIf {state = \cLd}
 \State {Recieve $I_x^y$} \Comment all local invites

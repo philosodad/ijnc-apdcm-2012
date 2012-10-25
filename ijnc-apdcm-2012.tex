@@ -70,17 +70,16 @@ We present an automata for a compute node in a message passing model which allow
 
 
 \section{Introduction}
-
-The Minimum Vertex Cover problem and its weighted variant are NP-Complete problems with several known linear time sequential algorithms that provide constant factor approximations. The existence of such algorithms suggests that it should be theoretically possible to discover a distributed or parallel algorithm to provide a constant factor approximation in constant time, however, it has been proven that no such algorithm exists\cite{1011811}. 
-
-Here we present a distributed algorithm that provides a 2-optimal solution to Minimum Weighted Vertex Cover in $O(\log\Delta)$ rounds with high probability, where $\Delta$ is the largest degree of the graph. This algorithm, based on maximal matchings, is the first distributed algorithm that we are aware of with a performance based on $\Delta$ rather than on the size of the graph. We extend our framework for this algorithm and show how it can be applied to the Minimum Edge Coloring problem and the Strong Directed Edge Coloring problem.\footnote{This work is an extension of our work in \cite{Daigle:2011uq, Daigle:2012uq}. The proofs have been substantially improved from our prior work and more experimental results are included.}
-
+\input{secs/sec-introduction}
 \subsection{Definitions}
 
 \input{defs/def-mvc}
 \input{defs/def-mwvc}
 \input{defs/def-edge-color}
 \input{defs/def-strong-directed-edge-color}
+
+Figure~\ref{fig:edge-colorings} illustrates edge coloring.
+\input{figs/fig-edge-colorings}
 \subsection{Prior Work}
 \subsubsection{Vertex Cover}
 
@@ -90,13 +89,11 @@ Here we present a distributed algorithm that provides a 2-optimal solution to Mi
 
 \input{secs/sec-prior-edge}
 
-\subsection{Organization of this Paper}
-
-Our primary practical result is a new distributed algorithm that reduces the communication complexity for finding a 2-optimal minimum weighted vertex cover from $O(\log n)$ to $O(\log \Delta)$. This algorithm uses a simple framework to convert the sequential algorithm presented in \cite{Gonzalez1995129} to the distributed case. We verify our findings theoretically and through experiment.
+\subsection{Organization}
 
 Our model and framework are presented in Section~\ref{sec:framework}. In Section~\ref{sec:dgmm-description} we describe the sequential algorithm of Gonzalez and show how the framework is applied to produce the distributed algorithm. In Section~\ref{ssb:algorithms-dgmm-performance} we provide a detailed proof of its performance bounds. Our experimental setup and results are described in Section~\ref{sec:vertex-experiment}.
 
-Section~\ref{sec:edge-coloring-problems} covers the algorithms for edge coloring and strong directed edge coloring. Section~\ref{sec:dimaed-description} describes DiMaEd, our edge coloring algorithm. Section~\ref{sec:dimaed-correct} discusses the running time and correctness of DiMaEd. Our experimental results for the edge coloring problem are in Section~\ref{sec:dimaed-experiments}. Section~\ref{sec:dima2ed-description} introduces DiMa2ed, or algorithm for strong edge coloring. We discuss the running time and correctness of DiMa2ed in Section~\ref{sec:dima2ed-correct}. We present limited experimental results for DiMa2ed in Section~\ref{sub:experiment-erdren-direct}.
+Section~\ref{sec:edge-coloring-problems} covers the algorithms for edge coloring and strong directed edge coloring. Section~\ref{sec:dimaed-description} describes DiMaEd, our edge coloring algorithm. Section~\ref{sec:dimaed-correct} discusses the running time and correctness of DiMaEd. Our experimental results for the edge coloring problem are in Section~\ref{sec:dimaed-experiments}. Section~\ref{sec:dima2ed-description} introduces DiMa2ed, our algorithm for strong edge coloring. We discuss the running time and correctness of DiMa2ed in Section~\ref{sec:dima2ed-correct}. We present limited experimental results for DiMa2ed in Section~\ref{sub:experiment-erdren-direct}.
 
 \section{The Model and Automata}
 \label{sec:framework}
@@ -107,8 +104,8 @@ Section~\ref{sec:edge-coloring-problems} covers the algorithms for edge coloring
 
 \section{The Vertex Cover Problem}
 \subsection{Algorithm}
-\input{secs/sec-dgmm-description}
 \input{algs/alg-dgmm.tex}
+\input{secs/sec-dgmm-description}
 \subsection{Analysis}
 \label{ssb:algorithms-dgmm-performance}
 
