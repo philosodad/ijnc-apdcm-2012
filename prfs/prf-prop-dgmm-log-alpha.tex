@@ -1,0 +1,7 @@
+\begin{proof}[Proof of Proposition~\ref{prop:dgmm-log-alpha}]
+
+We consider a node $u$, where $\alpha(u) = \delta$. $u$ may choose to be a sender or a receiver in this round, and $u$ may or may not join the matching. We do make the assumption that $u$ does not join the cover in this round.
+
+$u$ has $\delta$ active neighbors. According to Proposition~\ref{prop:dgmm-log-each}, each of these neighbors joins the cover with constant probability. So in round one, we expect some constant percentage $p$ of the neighbors of $u$ to join the cover, and some constant percentage $q = 1-p$ of the neighbors of $u$ to remain active. Therefore, the value of $\delta(n+1)$ (where $n+1$ represents a round number) is $\delta(n) \times q$. Therefore $\alpha$ decreases at a constant rate, which is what we wanted to show.
+
+\end{proof}

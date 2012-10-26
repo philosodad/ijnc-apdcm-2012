@@ -1,0 +1,14 @@
+\begin{proof}[Proof of Proposition~\ref{prop:dgmm-log-each}]
+
+We begin with a node, $w$, which is an active node in the graph. We want to show that the probability that $w$ will join the cover is constant. Let us assume that $w$ chooses to be a receiver, an event which happens with $P(0.5)$
+
+We know that $w$ has some number of active neighbors, indicated by $\alpha(w)$. Each neighbor of $w$ also has some number of active neighbors. Each active degree is an integer between 1 and $\delta$. We can consider each node to have approximately the same active degree, which we indicate by $\alpha$. 
+
+Each active neighbor of $w$ also chooses to be a sender or a receiver with equal probability. Following the assumption of equal distribution, there are $\sfrac{\alpha}{2}$ senders in the neighborhood of $w$, and each sender has $\alpha$ neighbors.
+
+Each neighbor of $w$ that chooses to be a sender will, according to Line~\ref{alglin:dgmm-issue-invite} of Algorithm~\ref{alg:dgmm}, choose one neighbor which is active and send an invitation to that node. Because there are approximately $\sfrac{\alpha}{2}$ inviting neighbors of $w$, we can consider the probability that $w$ will recieve an invitation to be approximately equivalent to the probability that any event with a probability of $\sfrac{1}{n}$ will occur in $\sfrac{n}{2}$ independent trials for $n > 0$. 
+
+Therefore, the probability that $w$ will recieve an invitation from an active neighbor is: \input{eqns/eqn-bootstrap}
+
+If $w$ recieves at least one invitation, it will respond to exactly one invitation (\algref{alg:dgmm}{alglin:dgmm-choose-invite}), so the probability that $w$ will respond to an invitation from some active neighbor $v$ is exactly the same as the probability that $w$ will recieve an invitation from some active neighbor $v$. Therefore, if $w$ is a receiver, $w$ joins the cover with a probability of $1 - \sfrac{1}{\sqrt{{\mathrm{e}}}}$, which is constant. The probability of $w$ being a receiver at all is $\sfrac{1}{2}$, and the probability of $w$ joining the cover is also $\sfrac{1}{2}$, as we assume that weights are distributed arbitrarily through the graph. Therefore, the probability that $w$ will join the cover in any given round is constant.
+\end{proof}

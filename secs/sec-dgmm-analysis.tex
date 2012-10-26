@@ -1,0 +1,43 @@
+\label{ssb:algorithms-dgmm-performance}
+
+Despite its overall simplicity, Algorithm~\ref{alg:dgmm} has a running time of $O(\log \Delta)$, which improves on the previous best result of $O(\log n)$ in \cite{1582746} without sacrificing the performance bound of two-optimality. 
+
+The proof for this depends on two points, first, that Algorithm~\ref{alg:dgmm} is correct, and second, we need to prove that the algorithm progesses towards a solution at a logarithmic rate. 
+
+To demonstrate the first point, we must show that our algorithm is equivalent in behavior to the sequential algorithm, which has already been shown to be correct\cite{Gonzalez1995129}. To do this we need to show that if each edge that is weighted in a given communication round were instead weighted sequentially in some arbitrary order, this would have no effect on the weightings assigned to each edge. If we show that, then because we use the same criteria for weighing edges as used by the sequential algorithm, and the sequential algorithm proceeds by weighting edges in an arbitrary order, our algorithm is equivalent.
+
+More formally, we make the following propositions:
+
+\input{prfs/prop-dgmm-edge-order.tex}
+\input{prfs/prop-dgmm-edge-match.tex}
+\input{prfs/prop-dgmm-edge-once.tex}
+
+A formal proof of these propositions follows.
+
+\input{prfs/prf-lem-dgmm-edge.tex}
+
+Given that DGMM is correct and produces a 2-optimal cover, the second point that must be shown is that DGMM terminates in $O(\log{\Delta})$ communication rounds.
+
+Intuitively, we look at this second point from the point of view of a single node. The algorithm itself terminates when every individual node reaches the ``Done'', or \cDd\ state. An individual node will reach this state under two circumstances, when either itself or all of it's neighbors join the cover.
+
+It is the second condition that we are interested in, specifically, we want to know, for any random node, how many of it's neighbors will join the cover in any particular round. If some constant fraction of those neighbors will join the cover in a given round, than the progression of the algorithm will be logarithmic on $\Delta$. 
+
+We use the following terminology in our proof of the time complexity of DGMM. We call a node {\em committed} if it has terminated execution, either by joining the cover or having all of its neighbors join the cover. A node which is not {\em committed} is {\em active}. The maximum degree of the graph is $\Delta$. A node's {\em active degree} is its number of unweighted edges, indicated by $\alpha(u)$ for some node $u$. The largest active degree in the graph is $\delta \le \Delta$. 
+
+In order to show that a constant fraction of the neighbors of any given node will join the cover in any given round, we want to show that first, there is a constant probability of any node joining the cover in any given round, and that second, $\delta$ decreases by a constant fraction in each round. Formally, we have the following two propositions.
+
+\input{prfs/prop-dgmm-log-each}
+\input{prfs/prop-dgmm-log-alpha}
+
+\input{prfs/prf-prop-dgmm-log-each}
+\input{prfs/prf-prop-dgmm-log-alpha}
+
+Taken together, Propositions~\ref{prop:dgmm-log-each} and~\ref{prop:dgmm-log-alpha} lead to the following Lemma.
+
+\input{prfs/lem-dgmm-log.tex}
+
+Which, in conjunction with Lemma~\ref{lem:dgmm-edge} lead to the following theorem.
+
+\input{prfs/thm-dgmm-termlog.tex}
+
+Which is what we wanted to derive.
