@@ -1,10 +1,18 @@
 \label{ssb:algorithms-dgmm-performance}
 
-Despite its overall simplicity, Algorithm~\ref{alg:dgmm} has a running time of $O(\log \Delta)$, which improves on the previous best result of $O(\log n)$ in \cite{1582746} without sacrificing the performance bound of two-optimality. 
+Despite its overall simplicity, Algorithm~\ref{alg:dgmm} (DGMM) has a running time of $O(\log \Delta)$, which improves on the previous best result of $O(\log n)$ in \cite{1582746} without sacrificing the performance bound of two-optimality. The message complexity of DGMM is also low.
 
-The proof for this depends on two points, first, that Algorithm~\ref{alg:dgmm} is correct, and second, we need to prove that the algorithm progesses towards a solution at a logarithmic rate. 
+\subsubsection{Message Complexity of DGMM}
 
-To demonstrate the first point, we must show that our algorithm is equivalent in behavior to the sequential algorithm, which has already been shown to be correct\cite{Gonzalez1995129}. To do this we need to show that if each edge that is weighted in a given communication round were instead weighted sequentially in some arbitrary order, this would have no effect on the weightings assigned to each edge. If we show that, then because we use the same criteria for weighing edges as used by the sequential algorithm, and the sequential algorithm proceeds by weighting edges in an arbitrary order, our algorithm is equivalent.
+The message passing model allows each node to send a message to each of its neighbors in each communication round. For our algorithm, a constant number of communication rounds are required for each computation round: one for invitations to be sent, one for responses to be sent, and one for exchanging final state. This final communication is required in order for nodes to learn which of their neighbors have joined the cover in this round.
+
+In each round, each node exchanges a maximum of 7 integers. An invitation from $u$ to $v$ contains three integers, the id of $u$, the id of $v$, and the incident weight of $u$. A response from $v$ to $u$ contains three integers, the id of $u$, the id of $v$, and the incident weight of $v$. A node $u$ which joins the cover must send each of it's neighbors one integer (it's own id), since nodes which have not joined the cover need not send any information at all during this portion of the round.
+
+Therefore the message complexity of DGMM is constant.
+
+\subsubsection{Correctness of DGMM}
+
+We must show that our algorithm is equivalent in behavior to the sequential algorithm, which has already been shown to be correct\cite{Gonzalez1995129}. To do this we need to show that if each edge that is weighted in a given communication round were instead weighted sequentially in some arbitrary order, this would have no effect on the weightings assigned to each edge. If we show that, then because we use the same criteria for weighting edges as used by the sequential algorithm, and the sequential algorithm proceeds by weighting edges in an arbitrary order, our algorithm is equivalent.
 
 More formally, we make the following propositions:
 
@@ -16,9 +24,9 @@ A formal proof of these propositions follows.
 
 \input{prfs/prf-lem-dgmm-edge.tex}
 
-Given that DGMM is correct and produces a 2-optimal cover, the second point that must be shown is that DGMM terminates in $O(\log{\Delta})$ communication rounds.
+\subsubsection{Performance of DGMM}
 
-Intuitively, we look at this second point from the point of view of a single node. The algorithm itself terminates when every individual node reaches the ``Done'', or \cDd\ state. An individual node will reach this state under two circumstances, when either itself or all of it's neighbors join the cover.
+Intuitively, we look at the performance of DGMM from the point of view of a single node. The algorithm itself terminates when every individual node reaches the ``Done'', or \cDd\ state. An individual node will reach this state under two circumstances, when either itself or all of it's neighbors join the cover.
 
 It is the second condition that we are interested in, specifically, we want to know, for any random node, how many of it's neighbors will join the cover in any particular round. If some constant fraction of those neighbors will join the cover in a given round, than the progression of the algorithm will be logarithmic on $\Delta$. 
 
