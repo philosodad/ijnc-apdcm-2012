@@ -12,7 +12,15 @@ If node $v$ is in the \cId\ state it executes Procedure~\ref{alg:ma2ed-crp}, cho
 If a node $v$ is in the \cLd\ state it collects all messages from its neighbors and transitions to the \cRd\ state. 
 
 \paragraph{\cRd\ (Respond) State}
-A node $v$ in the \cRd\ State must evaluate all of its invites to look for one that it can respond to. First, invites can be divided into two categories, those which contain the id of $v$ and those which do not. Call the former group group $a$ and the latter group group $b$. $v$ searches group $a$ for a message which proposes a usable color that is not in any proposal from group $b$. $v$ chooses a single message that meets that qualification and rebroadcasts it. $v$ deletes all other messages from memory and transitions to \cUd.
+A node $v$ in the \cRd\ State must evaluate all of its invites to look for one that it can respond to. First, invites can be divided into two categories, those which contain the id of $v$ and those which do not. Call the former group group $a$ and the latter group group $b$. $v$ searches group $a$ for a message which proposes a usable color that is not in any proposal from group $b$. $v$ chooses a single message that meets that qualification and rebroadcasts it. 
+
+This is a critical step for DiMa2Ed and is what allows the algorithm to make a distance 2 coloring with distance 1 information. All messages that $v$ receives come from it's distance 1 neighbors. $v$ cannot color an incoming edge with a color that is being used to color an outgoing edge from any neighbor of $v$ to any node other than $v$.
+
+Consider the nodes $u,v,w,x$. There is an edge $u \to v$, an edge $w \to v$, and an edge $w \to x$. $u$ and $x$ are not neighbors. In one round, $u$ sends an invitation to color $u, v$ with color $c$, and $w$ sends an invitation to color $w,x$ with color $c$. 
+
+$v$ will receive both invitations, as it is a neighbor of both $w$ and $u$, but $x$ will only receive one. Therefore $v$ is aware of this potential conflict and cannot respond to the invitation from $u$, but as long as $v$ will detect the conflict, $x$ is free to respond to the invitation from $w$. 
+
+This only works in the directed case, in an undirected graph $v$ would not have sufficient information to detect all possible conflicts. A formal discussion of this point can be found in the proof of correctness.
 
 \paragraph{\cWd\ (Wait) State}
 In the \cWd\ state, a node checks all messages from its neighbors looking for the message that it sent in the \cId\ state. If it finds such a message, it keeps it, otherwise, it deletes all messages from memory, and transitions to the \cUd\ state.
