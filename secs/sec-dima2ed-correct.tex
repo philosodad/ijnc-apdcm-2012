@@ -1,3 +1,26 @@
 \label{sec:dima2ed-correct}
-We here address the termination and correctness of Algorithm~\ref{alg:ma2ed}.
-\input{prfs/prf-dima2ed.tex}
+We here address the message complexity, termination and correctness of Algorithm~\ref{alg:ma2ed}.
+
+\subsection{Message Complexity of Algorithm~\ref{alg:ma2ed}}
+
+Unlike Algorithm~\ref{alg:dgmm} and Algorithm~\ref{alg:edge-color}, Algorithm~ref{alg:ma2ed} (DiMa2Ed) has high message complexity as written. The primary reason for this is the exchange round.
+
+Like the previous two algorithms, DiMa2Ed only needs to exchange three integers in the Invitation and Response phases, the id of the inviter, the id of the responder, and the index of the desired cover.
+
+However, considering the case of three nodes, $u,v,w,$, where there is a directed edge $u \to v$, a directed edge $v \to w$, and a directed edge $w \to v$. In order to accurately propose a color for edge $u,v$, $u$ must know the outgoing edges of $w$, since $v$ cannot use as an incoming coloring any outgoing color of $w$. Therefore, we are left with two choices.
+
+First, each node may compile a list of its "dead colors" and transmit that list to it's immediate neighbors during each round. This preserves the property that no node has any knowledge of the identity of nodes outside it's immediate neighborhood. The communication cost is quite high, however, since the potential number of dead colors for a node is the number of incoming edges of that nodes neighbors, which is limited only by Delta. 
+
+The other choice is to have each node keep a list of its two-hop neighbors and specifically receive a message from those neighbors through the intermediary of the one hop neighbor. In this case, the algorithm is no longer working on single hop information and the message passing model must allow $\Delta^2$ communications per round rather than $\Delta$.
+
+It is possible that an alternate strategy would work in practice. For example, each node could pass it's neighbors a fixed number of possible colors for the next round, rather than a comprehensive list of forbidden colors. Because DiMaEd proceeds somewhat slowly, and each node adds at most one color to its outgoing colors in each round, it seems likely that such a strategy would produce overlapping colors. However, we have not analyzed this possibility in any depth and so the message complexity of DiMa2Ed is $\Delta$.
+
+\subsection{Termination of Algorithm~\ref{alg:ma2ed}}
+
+\input{prfs/lem-dima2ed-term.tex}
+
+\subsection{Correctness of Algorithm~\ref{alg:ma2ed}}
+\input{prfs/lem-dima2ed-correct}
+Lemma~\ref{lem:dima2ed-term} and~\ref{lem:ma2ed-color-correct} lead us the Theorem~\ref{thm:ma2ed-correct}.
+
+\input{prfs/thm-dima2ed-term-correct}

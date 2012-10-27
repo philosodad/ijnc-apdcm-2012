@@ -8,13 +8,15 @@ So if there are no previously weighted edges incident to either endpoint, the we
 
 In GMM, every edge is examined exactly once. If no endpoints of the edge are in the cover, one endpoint will join the cover. Finally, all the edges are evaluated in arbitrary order. We explore this third point further in Section~\ref{ssb:algorithms-dgmm-performance}. 
 
-Our distributed version of the algorithm chooses some disjoint set of edges (a matching) and assigns weights to those edges according to~\eqref{eqn:gmm}. We describe how each node transitions through the automata.\footnote{For the following description, we will substitute the symbol $\varpi(u)$ for the term $\sum_i w(e(u,i))$ in~\eqref{eqn:gmm}.\label{fn:varpi}}
+Our distributed version of the algorithm chooses some disjoint set of edges (a matching) and assigns weights to those edges according to~\eqref{eqn:gmm}. Two nodes assign a weight to the edge between them by exchanging their {\em incident weights} and choosing the minimum. A node $v$ calculates it's incident weight $\varpi(v)$ as $w(v) - \sum_i w(e(u,i))$, that is, the weight of $v$ minus the sum of the weights of the edges incident to $v$.  
+
+We now describe how each node transitions through the automata.
 
 \paragraph{\cCd\ (Choose) State} 
 Each node that has not decided to join the cover or not begins the round in the \cCd\ state. In this step, each node chooses randomly whether transition to the \cId\ or \cLd\ state for the next step. 
 
 \paragraph{\cId\ (Invite) State}
-Each node $u$ in the \cId\ state chooses an unweighted edge $e(u,v)$ at random, and sends an invitation containing its own incident edge weight ($\varpi(u)$)\footnotemark[\value{footnote}], its own id, and the id of $v$, shown in line~\algref{alg:dgmm}{alglin:dgmm-issue-invite}. This broadcast is strictly local, that is, the neighbors of $u$ are the only possible choices for $v$, and the only nodes that receive the invitation. $u$ then transitions---either after communication or in synchrony with the transition to the next step for all nodes---to the \cWd\ state. 
+Each node $u$ in the \cId\ state chooses an unweighted edge $e(u,v)$ at random, and sends an invitation containing its own incident edge weight ($\varpi(u)$), its own id, and the id of $v$, shown in line~\algref{alg:dgmm}{alglin:dgmm-issue-invite}. This broadcast is strictly local, that is, the neighbors of $u$ are the only possible choices for $v$, and the only nodes that receive the invitation. $u$ then transitions---either after communication or in synchrony with the transition to the next step for all nodes---to the \cWd\ state. 
 
 \paragraph{\cLd\ (Listen) State} 
 Each node $v$ in the \cLd\ state collects the invitations that contain an edge $e(i,v)$, where $i$ is a neighbor of $v$. An invitation contains precisely 3 values, all of which may be integers: the id of $i$, the id of $v$, and the current incident weight $varpi(i)$, represented by the notation $I_u^v\varpi(v)$ in Algorithm~\ref{alg:dgmm}. 
