@@ -1,4 +1,42 @@
 \label{sec:dimaed-correct}
-We here address the termination, correctness, and solution quality of Algorithm~\ref{alg:edge-color}. We will first show that Algorithm~\ref{alg:edge-color} is likely to terminate in $O(\Delta)$ rounds, then that it will produce a correct coloring if it does terminate, and finally that the coloring produced will use no more than $2\Delta - 1$ colors.
-\input{prfs/pro-edge-color.tex}
-\input{prfs/lem-edge-color-optimal.tex}
+We here address the message complexity, termination, correctness, and solution quality of Algorithm~\ref{alg:edge-color}. We will first show that Algorithm~\ref{alg:edge-color} is likely to terminate in $O(\Delta)$ rounds, then that it will produce a correct coloring if it does terminate, and finally that the coloring produced will use no more than $2\Delta - 1$ colors.
+
+\subsubsection{Message Complexity of Algorithm~\ref{alg:edge-color}}
+
+Each node keeps, in some data structure, a list of it's neighbors and the colors that they are currently using. In our simulator, this is accomplished by using a list of hashes, where the id of each neighbor is the key to a hash, and the value of that hash is the list of colors that that particular neighbor is currently using. In the first round, these color lists are empty, as no edges have been colored yet.
+
+As did DGMM, Algorithm~\ref{alg:edge-color} (DiMaEd), assumes a message passing model of computing, where each node may pass a message to each neighbor in each communication round, and communication rounds are assumed to be synchronized. Also, each computation round requires 3 communication rounds, first, invitations must be sent, second, responses must be sent, and finally, color updates must be sent.
+
+An invitation from $u$ to $v$ to color edge $(u,v)$ contains three integers, the id of $u$, the id of $v$, and the intended color. This color is the lowest common indexed color between $u$ and $v$, which in the first round is 0, and in subsequent rounds can be found by comparing $u's$ current list of used colors and the current used colors of $v$, which is information that $u$ has in local storage.
+
+A response from $v$ to $u$ contains three integers as well, the id of $v$, the id of $u$, and the index of the accepted color. 
+
+The final message is the color update message, which contains the id of the node sending the update and the index of the color that it used in the current round. As each node can only color a single edge in a single round, this message contains two integers.
+
+So the message complexity of DiMaEd is constant.
+
+\subsubsection{Termination of Algorithm~\ref{alg:edge-color}}
+
+We propose the following Lemma.
+\input{prfs/lemma-edge-color-terminate}
+\input{prfs/prf-lemma-edge-color-terminate}
+
+\subsubsection{Correctness of Algorithm~\ref{alg:edge-color}}
+
+We propose the following Lemma.
+\input{prfs/lemma-edge-color-correct}
+\input{prfs/prf-lemma-edge-color-correct}
+
+\subsubsection{Solution Quality of Algorithm~\ref{alg:edge-color}}
+
+We propose the following Lemma.
+\input{prfs/lemma-edge-color-approximate}
+\input{prfs/prf-lemma-edge-color-approximate}
+
+Taken together, Lemmas~\ref{lem:edge-color-terminate}, \ref{lem:edge-color-correct}, and~\ref{lem:edge-color-approximate} give us the following theorem.
+
+\input{prfs/thm-edge-color}
+
+This approximation bound is weak. We also made the following conjecture, which was tested experimentally and born out in some classes of graphs.
+
+\input{prfs/lem-edge-color-optimal}

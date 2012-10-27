@@ -1,16 +1,4 @@
-\begin{lem}
+\begin{lemm}
 \label{lem:edge-color-correct}
 Algorithm~\ref{alg:edge-color} produces a correct coloring. 
-\end{lem}
-\begin{proof}[Proof of Lemma~\ref{lem:edge-color-correct}]
-
-Assume that Algorithm~\ref{alg:edge-color} does not produce a correct coloring, There are two cases where this could occur: either there exists a node $v$ that uses some color twice, or there exist nodes $v,w$ that color the edge $(v,w)$ with different colors. 
-
-A vertex colors an edge after negotiation with some neighbor. In order for an edge to be colored, a vertex $v$ must send an invitation to some neighbor $w$ to color $(v,w)$ with a specific color. Because we assume a message passing model, we assume that $w$ recieves this invitation. If $w$ responds to the invitation, $v$ assigns the color and $w$ assigns the color. In the message passing model, it is safe to assume that $v$ recieves the response from $w$. In order for $v$ to choose a different color than $w$ for $(v,w)$, $v$ would have to either color the edge without a response, which is contrary to the behavior of the vertex (line~\algref{alg:edge-color}{alglin:ec-receive-responses}), or $v$ must not receive the message, which is contrary to our model.
-
-In the second case, a vertex could use the same color twice if it either issued or responded to an invitation to use a color twice. We know, however, that whenever an algorithm uses a color, that color is assigned to a list (lines~\algref{alg:edge-color}{alglin:ec-assign1},~\algref{alg:edge-color}{alglin:ec-assign2}). These colors are further removed from the list in each round (line~\algref{alg:edge-color}{alglin:ec-update-colors}).
-
-If a vertex responded to or issued more than one invitation in a single round, it is possible that this conflict could occur, but this also contradicts the behavior of the algorithm of building a message containing a single id in either case.
-
-Algorithm~\ref{alg:edge-color} therefore produces a correct coloring.
-\end{proof}
+\end{lemm}

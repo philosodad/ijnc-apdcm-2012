@@ -1,0 +1,10 @@
+\begin{proof}[Discussion of Lemma~\ref{lem:edge-color-approximate}]
+
+We begin by showing the worst case performance of Algorithm~\ref{alg:edge-color}. 
+
+In each round that a node joins a pair, both nodes use the lowest common indexed color to color the edge between them. So in the first round, color 1 will be used for every edge in the matching, in the second round, color 1 or color 2, in the third 1,2, or 3, and so forth. 
+
+So to model our worst possible case, we propose a node $w$ with the following characteristics. First, node $w$ has a degree of $\Delta$ and all of the neighbors of $w$ have a degree of $\Delta$. Second, $w$ does not participate in the matching in the first $\Delta-1$ rounds, but every neighbor of $w$ does. In this way we insure that $w$ cannot form an edge with any neighbor with an index of less than $\Delta-1$. 
+
+In this case, $w$ will be forced to use an additional $\Delta$ colors to connect to each neighbor, and the total number of colors used will be $2\Delta-1$.
+\end{proof}
