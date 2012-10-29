@@ -1,7 +1,7 @@
 \label{sec:dima2ed-correct}
 We here address the message complexity, termination and correctness of Algorithm~\ref{alg:ma2ed}.
 
-\subsection{Message Complexity of Algorithm~\ref{alg:ma2ed}}
+\subsubsection{Message Complexity of Algorithm~\ref{alg:ma2ed}}
 
 Unlike Algorithm~\ref{alg:dgmm} and Algorithm~\ref{alg:edge-color}, Algorithm~ref{alg:ma2ed} (DiMa2Ed) has high message complexity as written. The primary reason for this is the exchange round.
 
@@ -15,11 +15,11 @@ The other choice is to have each node keep a list of its two-hop neighbors and s
 
 It is possible that an alternate strategy would work in practice. For example, each node could pass it's neighbors a fixed number of possible colors for the next round, rather than a comprehensive list of forbidden colors. Because DiMaEd proceeds somewhat slowly, and each node adds at most one color to its outgoing colors in each round, it seems likely that such a strategy would produce overlapping colors. However, we have not analyzed this possibility in any depth and so the message complexity of DiMa2Ed is $\Delta$.
 
-\subsection{Termination of Algorithm~\ref{alg:ma2ed}}
+\subsubsection{Termination of Algorithm~\ref{alg:ma2ed}}
 
 \input{prfs/lem-dima2ed-term.tex}
 
-\subsection{Correctness of Algorithm~\ref{alg:ma2ed}}
+\subsubsection{Correctness of Algorithm~\ref{alg:ma2ed}}
 \input{prfs/lem-dima2ed-correct}
 Lemma~\ref{lem:dima2ed-term} and~\ref{lem:ma2ed-color-correct} lead us the Theorem~\ref{thm:ma2ed-correct}.
 
